@@ -1,0 +1,33 @@
+<!--
+  Generated template for the HintModalPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header style="padding:5px;background:#28323d;color: #d7a463;">
+  <!-- <ion-navbar> -->
+    <!-- <ion-title> -->
+        <span style="position: absolute;margin-top: 9px;margin-left: 5px;font-size: 16px;">Help</span>
+    <!-- </ion-title> -->
+    <span><ion-icon style="float:right;padding:10px" name="close" (click)="close()" class="ess-pointer"></ion-icon></span>
+  <!-- </ion-navbar> -->
+</ion-header>
+
+
+<ion-content padding>
+  <div *ngIf="hintObject.length>0">
+    <div *ngFor="let hint of hintObject">
+            <h4>{{hint.title}}</h4>     
+            <ion-list text-wrap>
+                <ion-item *ngFor="let item of hint.details">
+                <p><strong>{{item.question}}</strong>  </p>
+                <p>Hint: {{item.hint}} </p>
+                </ion-item>
+            </ion-list>
+      </div>
+  </div>
+  <div *ngIf="hintObject.length==0" style="text-align:center;margin:0px auto">
+   <h5>No hints available.</h5>
+  </div>
+  
+</ion-content>

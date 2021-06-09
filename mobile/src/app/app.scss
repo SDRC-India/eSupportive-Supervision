@@ -1,0 +1,302 @@
+/*
+ * @Author: Ratikanta Pradhan 
+ * @email:   ratikanta@sdrc.co.in 
+ * @Last Modified by:   Ratikanta Pradhan 
+ * @Last Modified time: 11-10-2017 19:11:16 
+ */
+
+
+// http://ionicframework.com/docs/v2/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+
+ body.keyboard-is-open .scroll-content {
+  margin-bottom: 0 !important;
+}
+
+body.keyboard-is-open .fixed-content {
+  margin-bottom: 0 !important;
+}
+
+body.keyboard-is-open .applyFooter{
+        display: none;
+        bottom: 0;
+}
+
+.alert-ios .alert-radio-label{
+white-space: pre-line;
+}
+
+.alert-md .alert-radio-label{
+white-space: pre-line;
+}
+
+.alert-wp .alert-radio-label{
+white-space: pre-line;
+}
+
+.a_center {
+    text-align: center;
+}
+
+.a_right {
+    text-align: right;
+}
+
+.toolbar-background {
+    background-color: #28323d;
+}
+
+.toolbar-title {
+    color: #f0b569;
+}
+
+.button-inner {
+    color: #f0b569;
+}
+
+.bg-color2 {
+    background-color: #465569;
+}
+
+//We have used the following class to make visit date having little distance from district name in Edit Saved Form,
+.rowmar {
+    margin-top: 10px;
+}
+
+//To make the delete button big
+.ion-md-trash:before {
+    content: "\f398";
+    font-size: 34px;
+}
+.col_padding{
+    margin-left: -5px;
+    margin-right: -5px;
+}
+.ess_radio{
+     margin-top: -15px;
+}
+.col_padding{
+    padding: -15px;
+}
+.ess_item_lable {
+    opacity: 1 !important;
+    font-size: 17px !important;
+    color: map-get($colors, ess_black) !important;
+}
+.ess_item_lable_sub{
+    opacity: 1 !important;
+    font-size: 15px !important;
+    color: map-get($colors, ess_black) !important;
+}
+
+.ess_item_heading {
+    opacity: 1 !important;
+    color: map-get($colors, ess_black) !important;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.smenu-custom {
+    background: transparent;
+    color: white;
+}
+
+.bg-color-white {
+    background-color: white !important;
+}
+
+.margin-top10 {
+    margin-top: 17%;
+}
+
+.padding-left30 {
+    padding-left: 30px;
+}
+
+.margin-bottom10 {
+    margin-bottom: -10px !important;
+}
+
+.item-md h4 {
+    margin: 2px 0;
+    font-size: 1.2rem;
+    font-weight: normal;
+    line-height: normal;
+}
+
+.font-style {
+    font-size: 1.2rem;
+    font-weight: normal;
+}
+
+.mg-top {
+    margin-top: -6%;
+}
+
+.hint{
+    position: absolute;
+    float:right;
+    font-size:1.2em;
+    margin-right: 0.5em;
+    top: 13px;
+    right: 5px;
+    color: #d7a463;
+    cursor: pointer;
+}
+
+.text-color{
+    color: red;
+    margin-top: -5px;
+    text-align: right; 
+}
+
+// .version{
+//     float:right;
+//     font-size:1.2em;
+//     position: absolute;
+//     margin-top: 3px;
+//     margin-right: 0.5em;
+//     top: 16px;
+//     right: 10px;
+//     color: #d7a463;
+// }
+
+.version{
+   float:right;
+   font-size:1.2em;
+   position: absolute;
+   margin-right: 0.5em;
+   top: 0.9em;
+   right: 10px;
+   color: #d7a463;
+}
+.acordion-title {
+    cursor: pointer;
+}
+.syncModal {
+    .alert-head {
+        background: #f0b569 !important;
+    }
+    .alert-message {
+        background: lightgrey !important;
+    }
+    .reportBody {
+        margin-top: 14%;
+    }
+    h5 {
+        font-size: 1.3rem;
+        margin-top: -0.4rem;
+        color: black;
+    }
+    h2 {
+        font-size: 20px !important;
+        text-align: center;
+    }
+    .alert-button-group {
+        background: #28323d !important;
+    }
+}
+.web_margin{
+    margin-left: 20%;
+    margin-right: 20%;
+}
+.ess-pointer{
+    cursor: pointer
+}
+.ess-signatue{
+    width: 20%;
+    height: 20%
+}
+.left_margin{
+    margin-left: 15px
+}
+.top_margin{
+    margin-top: 30px;
+}
+.input-has-focus .label-md[floating],
+.input-has-value .label-md[floating] {
+ -webkit-transform: translate3d(0, 0, 0) scale(0.8);
+ font-size:2.1rem !important;
+}
+
+.input-has-focus .label-ios[floating],
+.input-has-value .label-ios[floating] {
+   -webkit-transform: translate3d(0, 0, 0) scale(0.8); 
+   transform: translate3d(0, 0, 0) scale(0.8); 
+   font-size:2.1rem !important;
+}
+.acordion-title{
+    padding-left: 10px;
+    background-color: #d7a463;
+    display: block;
+    height: 3em;
+    padding-top: 0.3em;
+}
+.alert-md .alert-wrapper {
+    box-shadow: 0 0px 0px rgba(0, 0, 0, 0) !important;
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+   -webkit-appearance: none;
+   -moz-appearance: none;
+   appearance: none;
+   margin: 0; 
+}
+input[type=number] {
+   -moz-appearance:textfield;
+}
+.web_facility_margin{
+    width: 60% !important;
+    border: 1px solid #ddd;
+    margin-left: 20% !important;
+    background-color: white !important;
+    // margin-right: 20%;
+    // background: white;
+    border-bottom: none;
+    border-top: none
+    
+}
+.web_facility_bottom_margin{
+    border: 2px solid #ddd; 
+}
+   
+ion-app.md {
+    background-color: #f0f0f0;
+}
+
+.ess-pop-up {
+    .alert-head {
+        background: #f0b569 !important;
+    }
+    .alert-message {
+        margin-top: 1.5em;
+        color: black;
+    }
+    h5 {
+        font-size: 1.3rem;
+        margin-top: -0.4rem;
+        color: black;
+    }
+    h2 {
+        font-size: 20px !important;
+        text-align: center;
+    }
+    .alert-button-group {
+        background: #28323d !important;
+    }
+    
+}

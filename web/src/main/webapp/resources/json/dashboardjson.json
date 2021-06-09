@@ -1,0 +1,146 @@
+{
+  "keyIndcators": [
+		  {
+		    "dataValue": 37,		    
+		    "indicator_Name": "Under-five mortality rate",
+		    "short_Name": "IMR",
+		    "sourceName": "Sample Registration System (SRS)",
+		    "timeperiod": "2015"
+		  },
+		  {
+		    "dataValue": 167,
+		    "indicator_Name": "Infant mortality rate",
+		    "short_Name": "MMR",
+		    "sourceName": "Sample Registration System (SRS)",
+		    "timeperiod": "2011-2013"
+		  },
+		  {
+		    "dataValue": 45,
+		    "indicator_Name": "Neonatal mortality rate",
+		    "short_Name": "U5MR",
+		    "sourceName": "Sample Registration System (SRS)",
+		    "timeperiod": "2015"
+		  },
+		  {
+			 "dataValue": 25,
+			 "indicator_Name": "Infant mortality rate",
+			 "short_Name": "NMR",
+			 "sourceName": "Sample Registration System (SRS)",
+			 "timeperiod": "2015"
+          }
+		],
+  "serviceRmncha": [
+    [
+      {
+        "indicator_Name": "New-borns immunized with BCG, OPV & Hepatitis B before discharge",
+        "axis": "New-borns immunized with BCG, OPV & Hepatitis B before discharge",
+        "value": "19.3"
+      },
+      {
+        "indicator_Name": "Availability of drugs/supplies - Designated NBCC",
+        "axis": "Facilities with functional NBCC",
+        "value": "74.3"
+      },
+      {
+        "indicator_Name": "Infants exclusively breastfed for 6 months",
+        "axis": "Infants exclusively breastfed for 6 months",
+        "value": "63.8"
+      }
+    ]
+  ],
+  "cdNcd": [
+    [
+      {
+        "indicator_Name": "Facilities where RDT kits are available",
+        "axis": "Facilities with RDT kits available",
+        "value": "50.0"
+      },
+      {
+        "indicator_Name": "Facilities where sputum collection and transportation facility is available",
+        "axis": "Facilities where sputum collection & transportation is available",
+        "value": "68.3"
+      }
+    ]
+  ],
+  "community":[
+	[
+      {
+        "indicator_Name": "Facilities where NCD clinic is functional",
+        "axis": "Facilities with functional NCD clinic",
+        "value": "76.3"
+      },
+      {
+        "indicator_Name": "Facilities where its NQAS score equals to or is above 50%",
+        "axis": "Facilities with NQAS score equal to or above 50%",
+        "value": "66.6"
+      }
+    ]
+  ],
+  "timePeriodName": "Sep 2017",
+  "maternalDeaths":[
+    {
+      "area_Name": null,
+      "key": "Maternal deaths",
+      "percentageValue": "312.0",
+      "indicator_Name": "Maternal deaths",
+      "short_Name": "Maternal deaths",
+      "sourceName": null,
+      "timeperiod": "Sep 2017",
+      "unit_Value": "Number"
+    },
+    {
+      "area_Name": null,
+      "key": "Maternal deaths",
+      "percentageValue": "200.0",
+      "indicator_Name": "Maternal deaths",
+      "short_Name": "Maternal deaths",
+      "sourceName": null,
+      "timeperiod": "Oct 2017",
+      "unit_Value": "Number"
+    }
+    ],
+  "ppiucd":[
+    {
+      "area_Name": null,
+      "key": "Females with PPIUCD inserted at facilities",
+      "percentageValue": "430.0",
+      "indicator_Name": "Females with PPIUCD inserted at facilities",
+      "short_Name": "Females with PPIUCD inserted at facilities",
+      "sourceName": null,
+      "timeperiod": "Sep 2017",
+      "unit_Value": "Number"
+    },
+    {
+      "area_Name": null,
+      "key": "Females with PPIUCD inserted at facilities",
+      "percentageValue": "60.0",
+      "indicator_Name": "Females with PPIUCD inserted at facilities",
+      "short_Name": "Females with PPIUCD inserted at facilities",
+      "sourceName": null,
+      "timeperiod": "Oct 2017",
+      "unit_Value": "Number"
+    }
+    ],
+   "diarrhoea":[
+    {
+      "area_Name": null,
+      "key": "Children under 5 years admitted with diarrhoea",
+      "percentageValue": "200.0",
+      "indicator_Name": "Children under 5 years admitted with diarrhoea",
+      "short_Name": "Children under 5 years admitted with diarrhoea",
+      "sourceName": null,
+      "timeperiod": "Sep 2017",
+      "unit_Value": "Number"
+    },
+    {
+      "area_Name": null,
+      "key": "Children under 5 years admitted with diarrhoea",
+      "percentageValue": "99.0",
+      "indicator_Name": "Children under 5 years admitted with diarrhoea",
+      "short_Name": "Children under 5 years admitted with diarrhoea",
+      "sourceName": null,
+      "timeperiod": "Oct 2017",
+      "unit_Value": "Number"
+    }
+  ]
+}

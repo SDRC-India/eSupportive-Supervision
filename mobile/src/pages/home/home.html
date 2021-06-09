@@ -1,0 +1,51 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title toolbar-md-title-text-color>
+           <p light>Home</p>  
+        </ion-title>
+   </ion-navbar>
+   <span class="version">v{{appVersionName}}</span>
+</ion-header>
+
+<!-- <ion-content padding> we have removed padding because 
+    ratnakar sir wanted the items in allign with burgur side menu-->
+<ion-content [ngClass]="{'home_bg' : is_web}">
+<div padding [ngClass]="{'home_margin' : is_web, 'mob_facility_margin' : !is_web,'home_content_border': is_web}">
+    <ion-list text-wrap>
+        <ion-item no-lines [ngClass]="{'ess_home_padding' : is_web, 'ess_home_padding_tab' : !is_web && width > 500, 'ess_home_padding_mobile' : !is_web && width < 500}">
+            <ion-thumbnail item-left class="pointer" (click)=gotoNext()>
+                <img src="assets/img/eSupportive_Supervision_icons_SVG_data_entry.svg">
+            </ion-thumbnail>
+            <h2><span class="pointer" (click)=gotoNext()>Fill Blank Form</span></h2>
+        </ion-item>
+        <ion-item no-lines [ngClass]="{'ess_home_padding' : is_web, 'ess_home_padding_tab' : !is_web && width > 500, 'ess_home_padding_mobile' : !is_web && width < 500}">
+            <ion-thumbnail item-left class="pointer" (click)="goToEditForm()">
+                <img src="assets/img/eSupportive_Supervision_icons_SVG_edit_form.svg">
+            </ion-thumbnail>
+            <h2><span class="pointer" (click)="goToEditForm()">Edit Saved Form ({{saved_form}})</span></h2>
+        </ion-item>
+        <ion-item no-lines [ngClass]="{'ess_home_padding' : is_web, 'ess_home_padding_tab' : !is_web && width > 500, 'ess_home_padding_mobile' : !is_web && width < 500}">
+            <ion-thumbnail item-left class="pointer" (click)="goToFinalizedForm()">
+                <img src="assets/img/eSupportive_Supervision_SVG_view_finalized_form.svg">
+            </ion-thumbnail>
+            <h2><span class="pointer" (click)="goToFinalizedForm()">View Finalized Form ({{finalized_form}})</span></h2>
+        </ion-item>
+        <ion-item no-lines [ngClass]="{'ess_home_padding' : is_web, 'ess_home_padding_tab' : !is_web && width > 500, 'ess_home_padding_mobile' : !is_web && width < 500}">
+            <ion-thumbnail item-left class="pointer" (click)="goToViewSentForm()">
+                <img src="assets/img/eSupportive_Supervision_SVG_view_sent_form.svg">
+            </ion-thumbnail>
+            <h2><span class="pointer" (click)="goToViewSentForm()">View Sent Form ({{sent_form}})</span></h2>
+        </ion-item>
+        <ion-item no-lines [ngClass]="{'ess_home_padding' : is_web, 'ess_home_padding_tab' : !is_web && width > 500, 'ess_home_padding_mobile' : !is_web && width < 500}">
+            <ion-thumbnail item-left class="pointer" [navPush]="prefetchDataPage">
+                <img src="assets/img/eSupportive_Supervision_SVG_prefetch_previous_visit_data.svg">
+            </ion-thumbnail>
+            <h2><span class="pointer" [navPush]="prefetchDataPage">Prefetch Data</span></h2>
+        </ion-item>
+
+    </ion-list>
+</div>
+</ion-content>

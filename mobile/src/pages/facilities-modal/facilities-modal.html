@@ -1,0 +1,86 @@
+<!--
+  Generated template for the FacilitiesModalPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>Select Facilities</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label class="ess_item_lable">State:</ion-label>
+          <ion-select [(ngModel)]="selectedState" (ionChange)="stateSelected()" [selectOptions]="selectPreFetchStateOptions">
+              <ion-option *ngFor="let d of states" [value]="d">{{d.name}}</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+   
+    <ion-row>
+      <ion-col col-sm-12 *ngIf="selectedState">
+        <ion-item>
+          <ion-label class="ess_item_lable">District:</ion-label>
+          <ion-select [(ngModel)]="selectedDistrict" (ionChange)="districtSelected()" [selectOptions]="selectPreFetchDistrictOptions">
+              <ion-option *ngFor="let d of districts" [value]="d">{{d.name}}</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col col-sm-12 *ngIf="selectedDistrict">
+        <ion-item>
+          <ion-label class="ess_item_lable">Facility Type:</ion-label>
+          <ion-select [(ngModel)]="selectedFacilitytype" (ionChange)="facilityTypeSelected()" [selectOptions]="selectPreFetchFacilityTypeOptions">
+              <ion-option *ngFor="let d of facilityTypeDetails | orderBy: 'orderLevel'" [value]="d">{{d.name}}</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col *ngIf="blockFlag">
+        <ion-item>
+          <ion-label class="ess_item_lable">Block:</ion-label>
+          <ion-select [(ngModel)]="selectedBlock" (ionChange)="blockSelected()" [selectOptions]="selectPreFetchBlockOptions">
+              <ion-option *ngFor="let d of blocks" [value]="d">{{d.name}}</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="facilities.length > 0">
+      <ion-col>
+        <ion-list>
+          <ion-item *ngFor="let f of facilities">
+            <ion-label>{{f.name}}</ion-label>
+            <ion-checkbox color="dark" [checked]="f.checked" [(ngModel)]="f.checked"></ion-checkbox>
+          </ion-item>
+        </ion-list>
+      </ion-col>  
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-title>
+      <ion-row>
+        <ion-col>
+          <button ion-button block color="primary" (click)="viewSelected()">Done</button>
+        </ion-col>
+        <ion-col>
+          <button ion-button block color="primary" (click)="cancel()">Cancel</button>
+        </ion-col>
+      </ion-row>
+    </ion-title>
+  </ion-toolbar>
+</ion-footer>

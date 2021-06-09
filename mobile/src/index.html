@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <title>eSS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+
+  <link rel="icon" type="image/x-icon" href="assets/img/ess_icon.ico">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#28323d">
+
+  <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=Intl.~locale.en"></script>
+  <!-- cordova.js required for cordova apps -->
+  <script src="cordova.js"></script>
+
+   <!-- <script type="text/javascript">
+    window.onbeforeunload = function ()
+      {
+     return "Are  you sure you want to continue?";
+      };
+   </script>
+<script> -->
+
+//   if ('serviceWorker' in navigator) {
+//   window.addEventListener('load', function() {
+//     navigator.serviceWorker.register('service-worker.js').then(function(registration) {
+//       // Registration was successful
+//       console.log('ServiceWorker registration successful with scope : ', registration.scope);
+//       registration.update();
+//     }, function(err) {
+//       // registration failed :(
+//       console.log('ServiceWorker registration failed: ', err);
+//     });
+//   });
+// }
+
+
+// Let's check if the browser supports notifications
+  if (!("Notification" in window)) {
+    console.log("This browser does not support desktop notification");
+  }
+
+  // Let's check whether notification permissions have alredy been granted
+  else if (Notification.permission === "granted") {
+    // If it's okay let's create a notification
+    // var notification = new Notification("Hi there!");
+  }
+
+  // Otherwise, we need to ask the user for permission
+  else if (Notification.permission !== 'denied' || Notification.permission === "default") {
+    Notification.requestPermission()
+    .then(function(permission) {
+      // If the user accepts, let's create a notification
+      if (permission === "granted") {
+        // var notification = new Notification("Hi there!");
+      }
+    })
+    .catch(function(err){
+        console.log("Error in requesting for service worker notification" + err);
+    });
+  }
+   /**
+       * @Author: Subhadarshani Patra
+        * @email:   subhadarshani@sdrc.co.in
+        * @Date: 2017-10-16 02:40
+        * @Last Modified by:  Subhadarshani Patra
+        * @Last Modified time: 2017-10-16 02:40
+        * @description {{this variable is used, if the running browser is Internet Explorer.}}
+
+
+       */
+  var isIETemp = /*@cc_on!@*/false || !!document.documentMode;
+    if(isIETemp){
+     localStorage.setItem("isIE",isIETemp);
+    }
+  </script>
+
+  <link href="build/main.css" rel="stylesheet">
+
+</head>
+<body>
+
+  <!-- Ionic's root component and where the app will load -->
+  <ion-app></ion-app>
+
+  <!-- The polyfills js is generated during the build process -->
+  <script src="build/polyfills.js"></script>
+
+  <script src="build/vendor.js"></script>
+
+  <!-- The bundle js is generated during the build process -->
+  <script src="build/main.js"></script>
+
+</body>
+</html>

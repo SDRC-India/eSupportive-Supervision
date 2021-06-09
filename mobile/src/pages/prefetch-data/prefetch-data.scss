@@ -1,0 +1,18 @@
+page-prefetch-data {
+    .buttonPosition{
+        text-align: -webkit-center;
+    }
+    .buttonSize{
+        width: 18vw;
+    }
+    .content-md {
+        color: #000;
+        background-color: #f0f0f0;
+    }  
+    .content_border{
+        border: 7px solid #ddd;
+    }
+    ::-webkit-scrollbar{ 
+       display: none; 
+    }
+}

@@ -1,0 +1,13 @@
+{
+  "name": "eSupportive Supervision",
+  "short_name": "eSS_PWA",
+  "start_url": "index.html",
+  "display": "standalone",
+  "icons": [{
+    "src": "assets/img/logo.png",
+    "sizes": "512x512",
+    "type": "image/png"
+  }],
+  "background_color": "#28323d",
+  "theme_color": "#28323d"
+}

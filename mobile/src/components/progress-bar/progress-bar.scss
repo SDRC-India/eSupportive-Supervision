@@ -1,0 +1,94 @@
+progress-bar {
+ 
+.progress-outer {
+         background-color: #f4f4f4;
+        // border: 1px solid #dcdcdc;
+        color: #fff;
+        margin-top: 5px;
+        
+        // border-radius: 20px;
+    }
+ 
+    .progress-inner {
+        min-width: 0%;
+        white-space: nowrap;
+        overflow: hidden;
+        padding: 2px;
+        border-radius: 20px;
+        background-color: map-get($colors, color_1 );
+    }
+    .progress-inner2{
+        min-width: 0%;
+        white-space: nowrap;
+        overflow: hidden;
+        padding: 2px;
+        border-radius: 20px;
+        background-color: map-get($colors, color_2);
+    }
+    .progress-inner3{
+        min-width: 0%;
+        white-space: nowrap;
+        overflow: hidden;
+        padding: 2px;
+        border-radius: 20px;
+        background-color: map-get($colors, color_3);
+    }
+    .progress-inner4{
+        min-width: 0%;
+        white-space: nowrap;
+        overflow: hidden;
+        padding: 2px;
+        border-radius: 20px;
+        background-color: map-get($colors, color_4);
+    }
+    .progress-inner5{
+        min-width: 0%;
+        white-space: nowrap;
+        overflow: hidden;
+        padding: 2px;
+        border-radius: 20px;
+        background-color: map-get($colors, color_5);
+    }
+    .progress-inner6{
+        min-width: 0%;
+        white-space: nowrap;
+        overflow: hidden;
+        padding: 2px;
+        border-radius: 20px;
+        background-color: map-get($colors, color_6);
+    }
+    .progress-inner7{
+        min-width: 0%;
+        white-space: nowrap;
+        overflow: hidden;
+        padding: 2px;
+        border-radius: 20px;
+        background-color: map-get($colors, color_7);
+    }
+    .progress-inner8{
+        min-width: 0%;
+        white-space: nowrap;
+        overflow: hidden;
+        padding: 2px;
+        border-radius: 20px;
+        background-color: map-get($colors, color_8);
+    }
+    .progress-inner9{
+        min-width: 0%;
+        white-space: nowrap;
+        overflow: hidden;
+        padding: 2px;
+        border-radius: 20px;
+        background-color: map-get($colors, color_9);
+    }
+    .progress-inner10{
+        min-width: 0%;
+        white-space: nowrap;
+        overflow: hidden;
+        padding: 2px;
+        border-radius: 20px;
+        background-color: map-get($colors, color_10);
+    }
+
+ 
+}

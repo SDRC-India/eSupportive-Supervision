@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- Uncomment and your base-package here: <context:component-scan base-package="org.springframework.samples.web"/> -->
+
+
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<!-- Example: a logical view name of 'showMessage' is mapped to '/WEB-INF/jsp/showMessage.jsp' -->
+		<property name="prefix" value="/WEB-INF/view/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+	<!-- all resources inside folder src/main/webapp/resources are mapped so 
+		they can be refered to inside JSP files (see header.jsp for more details) -->
+	<mvc:resources mapping="/resources/**" location="/resources/" />
+
+	<mvc:view-controller path="/resetPassword"
+		view-name="resetPassword" />
+<!-- 	<mvc:view-controller path="/userManagement" view-name="userManagement" /> -->
+	<mvc:view-controller path="/admin" view-name="admin" />
+	<mvc:view-controller path="/" view-name="home" />
+	<mvc:view-controller path="/home" view-name="home" />
+	<!-- <mvc:view-controller path="/resetUserPassword" view-name="resetUserPassword" /> -->
+	<!-- <mvc:view-controller path="/dashboard" view-name="dashboard" /> -->
+	<mvc:view-controller path="/openItems" view-name="openItems" />
+	<!-- <mvc:view-controller path="/planVsActualSupervision" view-name="planVsActualSupervision" /> -->
+	<!-- <mvc:view-controller path="/thematicView" view-name="thematicView" /> -->
+	<!-- <mvc:view-controller path="/facilityView" view-name="facilityView" /> -->
+	<!-- <mvc:view-controller path="/plan" view-name="plan" /> -->
+	<mvc:view-controller path="/dataEntry" view-name="dataEntry" />
+	<mvc:view-controller path="/query" view-name="query" />
+	<mvc:view-controller path="/aboutUs" view-name="aboutUs" />
+	<mvc:view-controller path="/gallery" view-name="gallery" />
+	<mvc:view-controller path="/videogallery" view-name="videogallery" />
+	<mvc:view-controller path="/help" view-name="help" />
+	<mvc:view-controller path="/contactUs" view-name="contactUs" />
+	<mvc:view-controller path="/sitemap" view-name="sitemap" /> 
+	<mvc:view-controller path="/termsofUse" view-name="termsofUse" />
+	<mvc:view-controller path="/privacyPolicy" view-name="privacyPolicy" />
+	<mvc:view-controller path="/disclaimer" view-name="disclaimer" />
+	<!-- <mvc:view-controller path="/designationManagement" view-name="designationManagement" /> --> 
+	<mvc:view-controller path="/linkExpired" view-name="linkExpired" /> 
+	<mvc:view-controller path="/resource" view-name="resource" /> 
+	<mvc:view-controller path="/newsUpdates" view-name="newsUpdates" />
+	<mvc:view-controller path="/imageEntry" view-name="imageEntry" />
+	<mvc:view-controller path="/videoEntry" view-name="videoEntry" />
+<!-- 	<mvc:view-controller path="/monitoringReportFacility" view-name="monitoringReportFacility" /> -->
+	<!-- <mvc:view-controller path="/designationWiseSubmission" view-name="designationWiseSubmission" /> -->
+	<!-- <mvc:view-controller path="/unsupervisedFacilityReport" view-name="unsupervisedFacilityReport" /> -->
+	<!-- <mvc:view-controller path="/rawDataReport" view-name="rawDataReport" /> -->
+	
+	
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- one of the properties available; the maximum file size in bytes -->
+		<property name="maxUploadSize" value="15730000" />
+	</bean>
+
+
+	<!-- Configure to plugin JSON as request and response in method handler -->
+	<bean
+		class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+		<property name="messageConverters">
+			<list>
+				<ref bean="jsonMessageConverter" />
+			</list>
+		</property>
+	</bean>
+
+
+	<!-- Configure bean to convert JSON to POJO and vice versa -->
+	<bean id="jsonMessageConverter"
+		class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+	</bean>
+</beans>

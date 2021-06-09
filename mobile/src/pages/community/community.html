@@ -1,0 +1,1815 @@
+<!--
+  Generated template for the CommunityPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header #head>
+
+    <ion-navbar>
+        <ion-title>Community Checklist</ion-title>
+    </ion-navbar>
+    <span class="hint" (click)="hintModal(sectorOrSubsectorNumber)"><ion-icon item-right name="alert"></ion-icon> Help</span>
+            <ion-grid wrap>
+                <ion-row [ngClass]="{'web_facility_margin' : is_web}" >
+                    <ion-col col-12>
+                        <ion-item no-lines class="subsectorSelect" (click)="onclickSelect()">
+                            <ion-label>Section:</ion-label>
+                            <ion-select class="subsectorSelect" [(ngModel)]="selectedSector" [disabled]="obj.facilityType==null || facilityObject==null" (ionChange)="sectorSelected()">
+                                <ion-option *ngFor="let s of sectors" value={{s.id}}>{{s.name}}</ion-option>
+                            </ion-select>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-12 *ngIf="showSubsectors">
+                        <ion-item no-lines class="subsectorSelect" (click)="onclickSubSectionSelect()">
+                            <ion-label>Sub Section:</ion-label>
+                            <ion-select class="subsectorSelect" [(ngModel)]="selectedSubsector" [disabled]="((this.obj.q31==34 || this.obj.q31==undefined) && sectorOrSubsectorNumber == 41)" (ionChange)="subsectorSelected()">
+                                <ion-option *ngFor="let s of subsectors" value={{s.id}}>{{s.name}}</ion-option>
+                            </ion-select>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-12>
+                         <div>
+    <community-progress-bar id="general_id" [progress]="progressBarObj.loadProgress_General" [hidden]="show_general_progressbar"></community-progress-bar>
+    <community-progress-bar id="vhnda_id" [progress]="progressBarObj.loadProgress_VHNDA" [hidden]="show_VHNDA_progressbar"></community-progress-bar>
+    <community-progress-bar id="iwanm_id" [progress]="progressBarObj.loadProgress_IWANM" [hidden]="show_IWANM_progressbar"></community-progress-bar>
+    <community-progress-bar id="iasha_id" [progress]="progressBarObj.loadProgress_IA_IASHA" [hidden]="show_IA_IASHA_progressbar"></community-progress-bar>
+    <community-progress-bar id="aoecwasa_id" [progress]="progressBarObj.loadProgress_IA_AOECWASA" [hidden]="show_IA_AOECWASA_progressbar"></community-progress-bar>
+    <community-progress-bar id="aiwa_id" [progress]="progressBarObj.loadProgress_IA_AIWA" [hidden]="show_IA_AIWA_progressbar"></community-progress-bar>
+    <community-progress-bar id="aisa_id" [progress]="progressBarObj.loadProgress_IA_AISA" [hidden]="show_IA_AISA_progressbar"></community-progress-bar>
+    <community-progress-bar id="iwpw_id" [progress]="progressBarObj.loadProgress_IB_IWPW" [hidden]="show_IB_IWPW_progressbar"></community-progress-bar>
+    <community-progress-bar id="iwlmwmb_id" [progress]="progressBarObj.loadProgress_IB_IWLMWMB" [hidden]="show_IB_IWLMWMB_progressbar"></community-progress-bar>
+    <community-progress-bar id="aassrfwsd_id" [progress]="progressBarObj.loadProgress_IB_AASSRFWSD" [hidden]="show_IB_AASSRFWSD_progressbar"></community-progress-bar>
+    <community-progress-bar id="ib_imwcm_id" [progress]="progressBarObj.loadProgress_IB_IMWCM" [hidden]="show_IB_IMWCM_progressbar"></community-progress-bar>
+    <community-progress-bar id="iwbmpwpm_id" [progress]="progressBarObj.loadProgress_IB_IWBMPWPM" [hidden]="show_IB_IWBMPWPM_progressbar"></community-progress-bar>
+    <community-progress-bar id="ib_iwfha_id" [progress]="progressBarObj.loadProgress_IB_IWFHA" [hidden]="show_IB_IWFHA_progressbar"></community-progress-bar>
+    <community-progress-bar id="ib_ihhd_id" [progress]="progressBarObj.loadProgress_IB_IHHD" [hidden]="show_IB_IHHD_progressbar"></community-progress-bar>
+    <community-progress-bar id="ib_saiwwnta_id" [progress]="progressBarObj.loadProgress_IB_SAIWWNTA" [hidden]="show_IB_SAIWWNTA_progressbar"></community-progress-bar>
+    <community-progress-bar id="geo_coordinate_id" [progress]="progressBarObj.loadProgress_Geo_coordinate" [hidden]="show_Geo_Coordinate_progressbar"></community-progress-bar>
+    <span style="float:right" [hidden]="show_VHNDA_progressbar">Score : {{obj.c_VHNDA_score}}/{{e1Score}}</span>
+    <span style="float:right" [hidden]="show_IWANM_progressbar">Score : {{obj.c_IWANM_score}}/{{e2Score}}</span>
+    <span style="float:right" [hidden]="show_IA_IASHA_progressbar">Score : {{obj.c_IA_IASHA_score}}/{{e3Score}}</span>
+    <span style="float:right" [hidden]="show_IA_AOECWASA_progressbar">Score : {{obj.c_IA_AOECWASA_score}}/{{e4Score}}</span>
+    <span style="float:right" [hidden]="show_IA_AIWA_progressbar">Score : {{obj.c_IA_AIWA_score}}/{{e5Score}}</span>
+    <span style="float:right" [hidden]="show_IA_AISA_progressbar">Score : {{obj.c_IA_AISA_score}}/{{e6Score}}</span>
+    <span style="float:right" [hidden]="show_IB_IWPW_progressbar">Score : {{obj.c_IB_IWPW_score}}/{{e7Score}}</span>
+    <span style="float:right" [hidden]="show_IB_IWLMWMB_progressbar">Score : {{obj.c_IB_IWLMWMB_score}}/{{e8Score}}</span>
+    <span style="float:right" [hidden]="show_IB_AASSRFWSD_progressbar">Score : {{obj.c_IB_AASSRFWSD_score}}/{{e9Score}}</span>
+    <span style="float:right" [hidden]="show_IB_IMWCM_progressbar">Score : {{obj.c_IB_IMWCM_score}}/{{e10Score}}</span>
+    <span style="float:right" [hidden]="show_IB_IWBMPWPM_progressbar">Score : {{obj.c_IB_IWBMPWPM_score}}/{{e11Score}}</span>
+    <span style="float:right" [hidden]="show_IB_IWFHA_progressbar">Score : {{obj.c_IB_IWFHA_score}}/{{e12Score}}</span>
+    <span style="float:right" [hidden]="show_IB_IHHD_progressbar">Score : {{obj.c_IB_IHHD_score}}/{{e13Score}}</span>
+    <span style="float:right" [hidden]="show_IB_SAIWWNTA_progressbar">Score : {{obj.c_IB_SAIWWNTA_score}}/{{e14Score}}</span>
+    </div>
+        </ion-col>
+    </ion-row>
+     <ion-row>
+             <div [ngClass]="{'web_facility_bottom_margin' : is_web}"></div>
+             </ion-row>
+</ion-grid>
+   
+</ion-header>
+<ion-content hide-header [header]="head" #content [ngStyle]="{'margin-top': ioncontentHeight + 'px','height': scrollHeight + '%'}"  [ngClass]="{'web_facility_margin' : is_web, 'mob_facility_margin' : !is_web,'content_border': is_web}">
+ <div padding>
+    <!---------------General InformationForm Started-------------------------->
+    <div [formGroup]="generalInformationForm" *ngIf="sectorOrSubsectorNumber === 1">
+        <p class="text-color">{{text}}</p>
+        <h4>General Information</h4>
+        <ion-list no-lines text-wrap>
+            <ion-item>
+                <ion-label *ngIf="!is_web" floating class="ess_item_lable">Name of the state:</ion-label>
+                <ion-label *ngIf="is_web" class="ess_item_lable">Name of the state:</ion-label>
+                <ion-select formControlName="q1" [(ngModel)]="stateObject" (ionChange)="stateSelected()" [selectOptions]="selectNameOfTheStateOptions" (press)="selectPressed($event, 'q1')" >
+                    <ion-option *ngFor="let d of states | orderBy: 'name'" [value]="d">{{d.name}}</ion-option>
+                    <ion-option disabled *ngIf="states == null || states.length < 1">No Data Available</ion-option>
+                </ion-select>
+            </ion-item>
+            <ion-item *ngIf="!forEdit && !generalInformationForm.controls.q1.valid  && (generalInformationForm.controls.q1.dirty || gForm)">
+                <p>Please select a State.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list no-lines text-wrap>
+            <ion-item (click)="onclickSelectDistrict()">
+                <ion-label *ngIf="!is_web" floating class="ess_item_lable">Name of the district:</ion-label>
+                <ion-label *ngIf="is_web" class="ess_item_lable">Name of the district:</ion-label>
+                <ion-select [disabled]="obj.q1==null" formControlName="q2" [(ngModel)]="districtObject" (press)="selectPressed($event, 'q2')" (ionChange)="districtSelected()" [selectOptions]="selectNameOfTheDistrictOptions">
+                    <ion-option *ngFor="let d of districts | orderBy: 'name'" [value]="d">{{d.name}}</ion-option>
+                    <ion-option disabled *ngIf="districts == null || districts.length < 1">No Data Available</ion-option>
+                </ion-select>
+            </ion-item>
+            <ion-item *ngIf="!forEdit && !generalInformationForm.controls.q2.valid  && (generalInformationForm.controls.q2.dirty || gForm)">
+                <p>Please select a District.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list text-wrap>
+            <ion-item (click)="onclickSelectFacilityType()">
+                <ion-label *ngIf="!is_web" floating class="ess_item_lable">Facility Type:</ion-label>
+                <ion-label *ngIf="is_web" class="ess_item_lable">Facility Type:</ion-label>
+                <ion-select formControlName="facilityType" [(ngModel)]="facilityTypeObject" [disabled]="facilityTypeDisable || forEdit" (press)="selectPressed($event, 'facilityType')" (ionChange)="facilityTypeSelected()" [selectOptions]="selectFacilityTypeOptions" (ngModelChange)="validate_c5_OtherField($event,facil)" #facil>
+                    <ion-option *ngFor="let d of facilityTypeDetails | orderBy: 'orderLevel'" [value]="d">{{d.name}}</ion-option>
+                    <ion-option disabled *ngIf="facilityTypeDetails == null || facilityTypeDetails.length < 1">No Data Available</ion-option>
+                </ion-select>
+            </ion-item>
+            <ion-item *ngIf="!forEdit && !generalInformationForm.controls.facilityType.valid  && (generalInformationForm.controls.facilityType.dirty || cS)">
+                <p>Please select a Facility Type.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list text-wrap>
+            <ion-item (click)="onclickSelectBlock()">
+                <ion-label *ngIf="!is_web" floating class="ess_item_lable">Name of the block:</ion-label>
+                <ion-label *ngIf="is_web" class="ess_item_lable">Name of the block:</ion-label>
+                <ion-select [disabled]="obj.q2==null" formControlName="q3" [(ngModel)]="blockObject" (press)="selectPressed($event, 'q3')" (ionChange)="blockSelected()" [selectOptions]="selectBlockOptions" >
+                    <ion-option *ngFor="let d of blocks | orderBy: 'name'" [value]="d">{{d.name}}</ion-option>
+                    <ion-option disabled *ngIf="blocks == null || blocks.length < 1">No Data Available</ion-option>
+                </ion-select>
+            </ion-item>
+            <ion-item *ngIf="!forEdit && !generalInformationForm.controls.q3.valid  && (generalInformationForm.controls.q3.dirty || cS)">
+                <p>Please select a Block.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list text-wrap>
+            <ion-item (click)="onclickSelectFacility()">
+                <ion-label *ngIf="!is_web" floating class="ess_item_lable">Facility:</ion-label>
+                <ion-label *ngIf="is_web" class="ess_item_lable">Facility:</ion-label>
+                <ion-select formControlName="facilityId" [(ngModel)]="facilityObject" (ionChange)="facilitySelected()" [selectOptions]="selectFacilityOptions" (press)="selectPressed($event, 'facility')">
+                    <ion-option *ngFor="let d of facilities | orderBy: 'name'" [value]="d">{{d.name}}</ion-option>
+                    <ion-option disabled *ngIf="facilities == null || facilities.length < 1">No Data Available</ion-option>
+                </ion-select>
+            </ion-item>
+        </ion-list>
+        <ion-list no-lines text-wrap>
+            <ion-item>
+                <ion-label floating class="ess_item_lable">Name of the Village:</ion-label>
+                <ion-textarea #myInput4 rows="1" autosize  (keyup)="resize(myInput4)" (keydown)="_alphabetsKeyDown($event)" (keypress)="_alphabetsKeyPress($event)" (paste)="onPaste($event,'q4')" formControlName="q4" [(ngModel)]="obj.q4" type="text"></ion-textarea>
+            </ion-item>
+            <ion-item *ngIf="!generalInformationForm.controls.q4.valid  && (generalInformationForm.controls.q4.dirty || gForm)">
+                <p>Please enter village name (The character '.' and ',' is allowed.).</p>
+            </ion-item>
+        </ion-list>
+        <ion-list no-lines text-wrap>
+            <ion-item>
+                <ion-label floating class="ess_item_lable">Name of the Supervisor:</ion-label>
+                <ion-textarea #myInput5 rows="1" autosize  (keyup)="resize(myInput5)" (keydown)="_alphabetsKeyDown($event)" (keypress)="_alphabetsKeyPress($event)" (paste)="onPaste($event,'q5')" formControlName="q5" [(ngModel)]="obj.q5" type="text"></ion-textarea>
+            </ion-item>
+        </ion-list>
+        <ion-list no-lines text-wrap>
+            <ion-item>
+                <ion-label floating class="ess_item_lable">Facility In-Charge/ Block Programme Manager/ Block ASHA Coordinator E-Mail ID (For sending filled checklist):</ion-label>
+                <ion-textarea #myInputq5a rows="1" autosize (keypress)="_emailKeyPress($event)" (keyup)="resize(myInputq5a)" (blur)="emailValidation()" formControlName="q5a" [(ngModel)]="obj.q5a" type="text"></ion-textarea>
+            </ion-item>
+            <ion-item *ngIf="forSaveStatus && !generalInformationForm.controls.q5a.valid  && (generalInformationForm.controls.q5a.dirty || gForm)">
+                <p>Please enter a valid email id.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list no-lines text-wrap>
+            <ion-item>
+                <ion-label floating class="ess_item_lable">Designation of the Supervisor:</ion-label>
+                <ion-textarea #myInput5b rows="1" autosize  (keyup)="resize(myInput5b)" (keydown)="_alphabetsKeyDown($event)" (keypress)="_alphabetsKeyPress($event)" (paste)="onPaste($event,'q5b')" formControlName="q5b" [(ngModel)]="obj.q5b" type="text"></ion-textarea>
+            </ion-item>
+        </ion-list>
+        <ion-list no-lines text-wrap>
+            <ion-item>
+                <ion-label floating class="ess_item_lable">Name of the Organization:</ion-label>
+                <ion-textarea #myInput5b rows="1" autosize  formControlName="q6" [(ngModel)]="organizationObject.organizationName" type="text"></ion-textarea>
+            </ion-item>            
+        </ion-list>
+        <ion-list no-lines text-wrap>
+            <ion-item>
+                <ion-label floating class="ess_item_lable">Level (Supervisor posted at):</ion-label>
+                <ion-textarea  #myInput7 rows="1" autosize  (keyup)="resize(myInput7)" (keydown)="_alphabetsKeyDown($event)" (keypress)="_alphabetsKeyPress($event)" (paste)="onPaste($event,'q7')" formControlName="q7" [(ngModel)]="obj.q7"></ion-textarea>
+            </ion-item>
+        </ion-list>
+        <ion-list no-lines text-wrap>
+            <ion-item>
+                <ion-row class="col_padding">
+                    <ion-col class="ess_item_lable">
+                        Date of Visit:
+                    </ion-col>
+                    <ion-col class="a_right">
+                        {{today | date:'dd-MM-y' }}
+                    </ion-col>
+                </ion-row>
+            </ion-item>
+        </ion-list>
+    </div>
+    <!---------------VHND Assessment-------------------------->
+    <div [formGroup]="vhndAssessment" *ngIf="sectorOrSubsectorNumber === 2">
+        <p class="text-color">{{text}}</p>
+        <h4>1. VHND Assessment</h4>
+        <ion-list no-lines text-wrap>
+            <ion-label class="ess_item_lable">
+                1.1. Whether ANM Provides following services during VHND?
+            </ion-label>
+        </ion-list>
+        <ion-list no-lines text-wrap radio-group formControlName="q11a" [(ngModel)]="obj.q11a">
+            <ion-label class="ess_item_lable">
+                1.1.a. Routine Immunization:
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of yesNoTypeDetails" no-lines>
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(2,d.name,'VHNDA','q11a')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q11a',2)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!vhndAssessment.controls.q11a.valid  && (vhndAssessment.controls.q11a.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list no-lines text-wrap radio-group formControlName="q11b" [(ngModel)]="obj.q11b">
+            <ion-label class="ess_item_lable">
+                1.1.b. Family planning services and counselling:
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of yesNoTypeDetails" no-lines>
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(3,d.name,'VHNDA','q11b')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q11b',3)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!vhndAssessment.controls.q11b.valid  && (vhndAssessment.controls.q11b.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list no-lines text-wrap radio-group formControlName="q11c" [(ngModel)]="obj.q11c">
+            <ion-label class="ess_item_lable">
+                1.1.c. Ante-natal care:
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of yesNoTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(4,d.name,'VHNDA','q11c')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q11c',4)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!vhndAssessment.controls.q11c.valid  && (vhndAssessment.controls.q11c.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list no-lines text-wrap radio-group formControlName="q11d" [(ngModel)]="obj.q11d">
+            <ion-label class="ess_item_lable">
+                1.1.d. Post-natal care:
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of yesNoTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(5,d.name,'VHNDA', 'q11d')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q11d',5)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!vhndAssessment.controls.q11d.valid  && (vhndAssessment.controls.q11d.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list no-lines text-wrap radio-group formControlName="q11e" [(ngModel)]="obj.q11e">
+            <ion-label class="ess_item_lable">
+                1.1.e. Nutrition and Health promotion to children and Adolescents:
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of yesNoTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(6,d.name,'VHNDA', 'q11e')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q11e',6)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!vhndAssessment.controls.q11e.valid  && (vhndAssessment.controls.q11e.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list no-lines text-wrap radio-group formControlName="q1p2" [(ngModel)]="obj.q1p2">
+            <ion-label class="ess_item_lable">
+                1.2. Is Growth monitoring done at Anganwadi center/VHNDs?
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of yesNoNaTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(7,d.name,'VHNDA','q1p2')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q1p2',7)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!vhndAssessment.controls.q1p2.valid  && (vhndAssessment.controls.q1p2.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list no-lines text-wrap radio-group formControlName="q1p3" [(ngModel)]="obj.q1p3">
+            <ion-label class="ess_item_lable">
+                1.3. Is Routine Immunization micro-plan available at VHND session?
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of yesNoNaTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(8,d.name,'VHNDA','q1p3')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q1p3',8)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!vhndAssessment.controls.q1p3.valid  && (vhndAssessment.controls.q1p3.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list no-lines text-wrap radio-group formControlName="q1p4" [(ngModel)]="obj.q1p4">
+            <ion-label class="ess_item_lable">
+                1.4. Is Due list for Routine Immunization, ANC, PNC available with ASHA/ANM?
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of yesNoNaTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(9,d.name,'VHNDA','q1p4')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q1p4',9)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!vhndAssessment.controls.q1p4.valid  && (vhndAssessment.controls.q1p4.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list no-lines text-wrap radio-group formControlName="q1p5" [(ngModel)]="obj.q1p5" *ngIf="obj.q1p4==39" >
+            <ion-label class="ess_item_lable">
+                1.5. As per due list did 75% of the beneficiaries attend the VHND session?
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of yesNoNaTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(10,d.name,'VHNDA','q1p5')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q1p5',10)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!vhndAssessment.controls.q1p5.valid  && (vhndAssessment.controls.q1p5.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+    </div>
+
+    <!---------------Interview with ANM-------------------------->
+    <div [formGroup]="interviewAnm" *ngIf="sectorOrSubsectorNumber === 3">
+        <p class="text-color">{{text}}</p>
+        <h4>2. Interview with ANM</h4>
+        <ion-list no-lines text-wrap radio-group formControlName="q21" [(ngModel)]="obj.q21">
+            <ion-label class="ess_item_lable">
+                2.1. Is Community distribution of Misoprostol for home deliveries implemented?
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of optionTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(11,d.name,'IWANM', 'q21')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q21',11)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!interviewAnm.controls.q21.valid  && (interviewAnm.controls.q21.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list no-lines text-wrap radio-group formControlName="q22" [(ngModel)]="obj.q22">
+            <ion-label class="ess_item_lable">
+                2.2. Are high risk pregnancies line-listed at the health facility?
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of optionTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(12,d.name,'IWANM', 'q22')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q22',12)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!interviewAnm.controls.q22.valid  && (interviewAnm.controls.q22.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list no-lines text-wrap radio-group formControlName="q23" [(ngModel)]="obj.q23">
+            <ion-label class="ess_item_lable">
+                2.3. Were maternal/child deaths reported from the area of the sub-center in last 1 year?
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of optionTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(13,d.name,'IWANM', 'q23')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q23',13)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!interviewAnm.controls.q23.valid  && (interviewAnm.controls.q23.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list no-lines text-wrap radio-group formControlName="q24" [(ngModel)]="obj.q24">
+            <ion-label class="ess_item_lable">
+                2.4. If death reviewed, were corrective actions taken for the probable community causes?
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of optionTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(14,d.name,'IWANM', 'q24')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q24',14)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!interviewAnm.controls.q24.valid  && (interviewAnm.controls.q24.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list no-lines text-wrap>
+            <ion-item>
+                <ion-label floating class="ess_item_lable">2.5. Number of SAM children identified in the community:</ion-label>
+                <ion-input #myInput55 rows="1" autosize  (blur)="onblurAhValidate(1)" (keyup)="resize(myInput55)" (keypress)="_numberKeyPress($event)" (paste)="onPaste($event,'q25')" formControlName="q25" [(ngModel)]="obj.q25" type="number" pattern="(^[0-9]{1,8}$)"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="!interviewAnm.controls.q25.valid  && (interviewAnm.controls.q25.dirty || finalizeAttempt)">
+                <p>Please enter a valid number</p>
+            </ion-item>
+        </ion-list>
+        <ion-list no-lines text-wrap>
+            <ion-item>
+                <ion-label floating class="ess_item_lable">2.5.1. Number of SAM children referred to Nutritional Rehabilitation Centre (NRCs)/higher centre?</ion-label>
+                <ion-input #myInput55 rows="1" autosize  (blur)="onblurAhValidate(0)" (keyup)="resize(myInput55)" (keydown)="_alphabetsKeyDown($event)" (keypress)="_numberKeyPress($event)" (paste)="onPaste($event,'q251')" formControlName="q251" [(ngModel)]="obj.q251" type="number" pattern="(^[0-9]{1,8}$)"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="!interviewAnm.controls.q251.valid  && (interviewAnm.controls.q251.dirty || finalizeAttempt)">
+                <p>Value cannot be negative and must be less or equal to number of SAM children.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list no-lines text-wrap radio-group formControlName="q26" [(ngModel)]="obj.q26">
+            <ion-label class="ess_item_lable">
+                2.6. Has the ANM been trained on RKSK?
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of optionTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(15,d.name,'IWANM', 'q26')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q26',15)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!interviewAnm.controls.q26.valid  && (interviewAnm.controls.q26.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list no-lines text-wrap radio-group formControlName="q27" [(ngModel)]="obj.q27">
+            <ion-label class="ess_item_lable">
+                2.7. Has the ASHA been trained on RKSK?
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of optionTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(16,d.name,'IWANM', 'q27')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q27',16)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!interviewAnm.controls.q27.valid  && (interviewAnm.controls.q27.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+    </div>
+
+    <!------------------lnterview with ASHA---------------------------->
+    <div [formGroup]="interviewAsha" *ngIf="sectorOrSubsectorNumber === 41">
+        <p *ngIf="obj.q31==33" class="text-color">{{text}}</p>
+        <ion-list no-lines text-wrap radio-group formControlName="q31" [(ngModel)]="obj.q31">
+            <ion-label class="ess_item_lable">
+                Is ASHA available for interview?
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of yesNoTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclickOptional(105,d.name,'IASHA','q31')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q31',105)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!interviewAsha.controls.q31.valid  && (interviewAsha.controls.q31.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <h4 *ngIf="obj.q31==33">3.1. Incentives to ASHA</h4>
+        <ion-list *ngIf="obj.q31==33" no-lines text-wrap radio-group formControlName="q31a" [(ngModel)]="obj.q31a">
+            <ion-label class="ess_item_lable">
+                3.1.a. Was ASHA paid incentives for ANC services & accompanying mother for Institutional delivery?
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of optionTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(17,d.name,'IASHA', 'q31a')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q31a',17)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!interviewAsha.controls.q31a.valid  && (interviewAsha.controls.q31a.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list *ngIf="obj.q31==33" no-lines text-wrap radio-group formControlName="q31b" [(ngModel)]="obj.q31b">
+            <ion-label class="ess_item_lable">
+                3.1.b. Was ASHA paid incentives for delaying and spacing of births?
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of optionTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(18,d.name,'IASHA', 'q31b')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q31b',18)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!interviewAsha.controls.q31b.valid  && (interviewAsha.controls.q31b.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list *ngIf="obj.q31==33" no-lines text-wrap radio-group formControlName="q31c" [(ngModel)]="obj.q31c">
+            <ion-label class="ess_item_lable">
+                3.1.c. Was ASHA paid incentives for escorting clients for PPIUCD insertions?
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of optionTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(19,d.name,'IASHA', 'q31c')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q31c',19)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!interviewAsha.controls.q31c.valid  && (interviewAsha.controls.q31c.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list *ngIf="obj.q31==33" no-lines text-wrap radio-group formControlName="q31d" [(ngModel)]="obj.q31d">
+            <ion-label class="ess_item_lable">
+                3.1.d. Was ASHA paid incentive for immunization of children below 1 year and 1 to 2 year?
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of optionTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(20,d.name,'IASHA', 'q31d')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q31d',20)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!interviewAsha.controls.q31d.valid  && (interviewAsha.controls.q31d.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list *ngIf="obj.q31==33" no-lines text-wrap radio-group formControlName="q311" [(ngModel)]="obj.q311">
+            <ion-label class="ess_item_lable">
+                3.1.1. Is there any delay in last six months in payments to ASHA?
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of optionTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(21,d.name,'IASHA', 'q311')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q311',21)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!interviewAsha.controls.q311.valid  && (interviewAsha.controls.q311.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list *ngIf="obj.q31==33" no-lines text-wrap radio-group formControlName="q32" [(ngModel)]="obj.q32">
+            <ion-label class="ess_item_lable">
+                3.2. Is the ASHA trained on module 6 & 7 for HBNC?
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of optionTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(22,d.name,'IASHA', 'q32')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q32',22)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!interviewAsha.controls.q32.valid  && (interviewAsha.controls.q32.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list *ngIf="obj.q32==26 && obj.q31==33" no-lines text-wrap radio-group formControlName="q321" [(ngModel)]="obj.q321">
+            <ion-label class="ess_item_lable">
+                3.2.1. If yes, does she perform HH visits for HBNC?
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of optionTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(23,d.name,'IASHA', 'q321')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q321',23)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!interviewAsha.controls.q321.valid  && (interviewAsha.controls.q321.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list *ngIf="obj.q31==33" no-lines text-wrap>
+            <ion-item>
+                <ion-label floating class="ess_item_lable">3.3. Number of sick newborn or newborns with danger signs identified in community by ASHA:</ion-label>
+                <ion-input #myInput55 rows="1" autosize  (keyup)="resize(myInput55)" (keydown)="_alphabetsKeyDown($event)" (keypress)="_numberKeyPress($event)"  (paste)="onPaste($event,'q33')" formControlName="q33" [(ngModel)]="obj.q33" type="number" pattern="(^[0-9]{1,8}$)"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="!interviewAsha.controls.q33.valid  && (interviewAsha.controls.q33.dirty || finalizeAttempt)">
+                <p>Please enter a valid number.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list *ngIf="isq33 && obj.q31==33" no-lines text-wrap radio-group formControlName="q331" [(ngModel)]="obj.q331">
+            <ion-label class="ess_item_lable">
+                3.3.1. Whether sick newborn or newborns with danger signs referred to Higher facilities?
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of optionTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(24,d.name,'IASHA', 'q331')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q331',24)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!interviewAsha.controls.q331.valid  && (interviewAsha.controls.q331.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list *ngIf="obj.q31==33" no-lines text-wrap radio-group formControlName="q34" [(ngModel)]="obj.q34">
+            <ion-label class="ess_item_lable">
+                3.4. Whether follow-up visit to LBW Babies & SNCU discharged babies done by ASHA?
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of optionTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(25,d.name,'IASHA', 'q34')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q34',25)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!interviewAsha.controls.q34.valid  && (interviewAsha.controls.q34.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list *ngIf="obj.q31==33" no-lines text-wrap radio-group formControlName="q35" [(ngModel)]="obj.q35">
+            <ion-label class="ess_item_lable">
+                3.5. Is ASHA aware about incentive given under RKSK?
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of optionTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(26,d.name,'IASHA', 'q35')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q35',26)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!interviewAsha.controls.q35.valid  && (interviewAsha.controls.q35.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list *ngIf="obj.q31==33" no-lines text-wrap radio-group formControlName="q36" [(ngModel)]="obj.q36">
+            <ion-label class="ess_item_lable">
+                3.6. Has ASHA referred any Adolescents to the nearest AFHC last month?
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of optionTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(27,d.name,'IASHA', 'q36')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q36',27)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!interviewAsha.controls.q36.valid  && (interviewAsha.controls.q36.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+    </div>
+
+    <!------------------Availability of essential commodities with ASHA/School/AWCs---------------------------->
+    <div [formGroup]="aoecwAshaSchoolAwcs" *ngIf="sectorOrSubsectorNumber === 42">
+        <p class="text-color">{{text}}</p>
+        <h4>3.7. Availability of essential commodities with ASHA/School/AWCs</h4>
+        <ion-list no-lines text-wrap radio-group formControlName="q37a" [(ngModel)]="obj.q37a">
+            <ion-label class="ess_item_lable">
+                3.7.a. Pregnancy testing kit:
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of yesNoNaTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(28,d.name,'AOECWASA', 'q37a')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q37a',28)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!aoecwAshaSchoolAwcs.controls.q37a.valid  && (aoecwAshaSchoolAwcs.controls.q37a.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list no-lines text-wrap radio-group formControlName="q37b" [(ngModel)]="obj.q37b">
+            <ion-label class="ess_item_lable">
+                3.7.b. Mala N:
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of yesNoNaTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(29,d.name,'AOECWASA', 'q37b')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q37b',29)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!aoecwAshaSchoolAwcs.controls.q37b.valid  && (aoecwAshaSchoolAwcs.controls.q37b.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list no-lines text-wrap radio-group formControlName="q37c" [(ngModel)]="obj.q37c">
+            <ion-label class="ess_item_lable">
+                3.7.c. Centchroman:
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of yesNoNaTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(30,d.name,'AOECWASA', 'q37c')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q37c',30)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!aoecwAshaSchoolAwcs.controls.q37c.valid  && (aoecwAshaSchoolAwcs.controls.q37c.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list no-lines text-wrap radio-group formControlName="q37d" [(ngModel)]="obj.q37d">
+            <ion-label class="ess_item_lable">
+                3.7.d. ECP:
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of yesNoNaTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(31,d.name,'AOECWASA', 'q37d')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q37d',31)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!aoecwAshaSchoolAwcs.controls.q37d.valid  && (aoecwAshaSchoolAwcs.controls.q37d.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list no-lines text-wrap radio-group formControlName="q37e" [(ngModel)]="obj.q37e">
+            <ion-label class="ess_item_lable">
+                3.7.e. Condoms:
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of yesNoNaTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(32,d.name,'AOECWASA', 'q37e')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q37e',32)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!aoecwAshaSchoolAwcs.controls.q37e.valid  && (aoecwAshaSchoolAwcs.controls.q37e.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+    </div>
+
+    <!------------------Availability of IFA with ASHA---------------------------->
+
+    <div [formGroup]="availabilityOfIfaWithAsha" *ngIf="sectorOrSubsectorNumber === 43">
+        <p class="text-color">{{text}}</p>
+        <h4>3.7.F. Availability of IFA with ASHA</h4>
+        <ion-list no-lines text-wrap radio-group formControlName="q37fi" [(ngModel)]="obj.q37fi">
+            <ion-label class="ess_item_lable">
+                3.7.f.i. 6 month - 5yrs - IFA syrup (Bi-weekly):
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of yesNoNaTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(33,d.name,'AIWA', 'q37fi')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q37fi',33)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!availabilityOfIfaWithAsha.controls.q37fi.valid  && (availabilityOfIfaWithAsha.controls.q37fi.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list no-lines text-wrap radio-group formControlName="q37fii" [(ngModel)]="obj.q37fii">
+            <ion-label class="ess_item_lable">
+                3.7.f.ii. Pregnant women and Lactating mothers -Red IFA Tab:
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of yesNoNaTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(34,d.name,'AIWA', 'q37fii')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q37fii',34)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!availabilityOfIfaWithAsha.controls.q37fii.valid  && (availabilityOfIfaWithAsha.controls.q37fii.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+    </div>
+
+    <!------------------Availability of IFA at school/AWCs---------------------------->
+
+    <div [formGroup]="availabilityOfIfaAtSchoolAwcs" *ngIf="sectorOrSubsectorNumber === 44">
+        <p class="text-color">{{text}}</p>
+        <h4>3.7.G. Availability of IFA at school/AWCs</h4>
+        <ion-list no-lines text-wrap radio-group formControlName="q37gi" [(ngModel)]="obj.q37gi">
+            <ion-label class="ess_item_lable">
+                3.7.g.i. 5-10yrs-Tab. IFA (Pink colored sugar coated) WIFS Junior:
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of yesNoNaTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(35,d.name,'AISA', 'q37gi')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q37gi',35)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!availabilityOfIfaAtSchoolAwcs.controls.q37gi.valid  && (availabilityOfIfaAtSchoolAwcs.controls.q37gi.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list no-lines text-wrap radio-group formControlName="q37gii" [(ngModel)]="obj.q37gii">
+            <ion-label class="ess_item_lable">
+                3.7.g.ii. 10-19yrs-Tab. IFA (Blue colored - Enteric coated):
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of yesNoNaTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(36,d.name,'AISA', 'q37gii')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q37gii',36)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!availabilityOfIfaAtSchoolAwcs.controls.q37gii.valid  && (availabilityOfIfaAtSchoolAwcs.controls.q37gii.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list no-lines text-wrap radio-group formControlName="q37h" [(ngModel)]="obj.q37h">
+            <ion-label class="ess_item_lable">
+                3.7.h. MBI kit to test iodine level in salt:
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of yesNoNaTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(37,d.name,'AISA', 'q37h')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q37h',37)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!availabilityOfIfaAtSchoolAwcs.controls.q37h.valid  && (availabilityOfIfaAtSchoolAwcs.controls.q37h.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list no-lines text-wrap radio-group formControlName="q37i" [(ngModel)]="obj.q37i">
+            <ion-label class="ess_item_lable">
+                3.7.i. MUAC tape:
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of yesNoNaTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(38,d.name,'AISA', 'q37i')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q37i',38)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!availabilityOfIfaAtSchoolAwcs.controls.q37i.valid  && (availabilityOfIfaAtSchoolAwcs.controls.q37i.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list no-lines text-wrap radio-group formControlName="q37j" [(ngModel)]="obj.q37j">
+            <ion-label class="ess_item_lable">
+                3.7.j. ORS and Zinc:
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of yesNoNaTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(39,d.name,'AISA', 'q37j')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q37j',39)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!availabilityOfIfaAtSchoolAwcs.controls.q37j.valid  && (availabilityOfIfaAtSchoolAwcs.controls.q37j.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list no-lines text-wrap radio-group formControlName="q37k" [(ngModel)]="obj.q37k">
+            <ion-label class="ess_item_lable">
+                3.7.k. HBNC Kit:
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of yesNoNaTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(40,d.name,'AISA', 'q37k')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q37k',40)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!availabilityOfIfaAtSchoolAwcs.controls.q37k.valid  && (availabilityOfIfaAtSchoolAwcs.controls.q37k.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list no-lines text-wrap radio-group formControlName="q37l" [(ngModel)]="obj.q37l">
+            <ion-label class="ess_item_lable">
+                3.7.l. Sanitary napkins:
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of yesNoNaTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(41,d.name,'AISA', 'q37l')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q37l',41)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!availabilityOfIfaAtSchoolAwcs.controls.q37l.valid  && (availabilityOfIfaAtSchoolAwcs.controls.q37l.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+    </div>
+
+    <!---------------Interview with Pregnant woman Section Started-------------------------->
+
+    <div [formGroup]="interviewWithOregnantWomanSection" *ngIf="sectorOrSubsectorNumber === 51">
+        <p class="text-color">{{text}}</p>
+        <h4>4.1. Interview with Pregnant woman</h4>
+        <ion-list no-lines text-wrap radio-group formControlName="q411" [(ngModel)]="obj.q411">
+            <ion-label class="ess_item_lable">
+                4.1.1. Is the pregnant woman registered in the first trimester?
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of optionTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(42,d.name,'IWPW', 'q411')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q411',42)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!interviewWithOregnantWomanSection.controls.q411.valid  && (interviewWithOregnantWomanSection.controls.q411.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list no-lines text-wrap radio-group formControlName="q412" [(ngModel)]="obj.q412">
+            <ion-label class="ess_item_lable">
+                4.1.2. Did the PW receive all services under Antenatal care?
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of optionTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(43,d.name,'IWPW', 'q412')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q412',43)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!interviewWithOregnantWomanSection.controls.q412.valid  && (interviewWithOregnantWomanSection.controls.q412.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list no-lines text-wrap radio-group formControlName="q413" [(ngModel)]="obj.q413">
+            <ion-label class="ess_item_lable">
+                4.1.3. Is the PW counseled for Post-partum FP choices Including PPIUCD by ASHA/ANM during ANC?
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of optionTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(44,d.name,'IWPW', 'q413')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q413',44)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!interviewWithOregnantWomanSection.controls.q413.valid  && (interviewWithOregnantWomanSection.controls.q413.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+    </div>
+
+
+    <!------------------Interview with Lactating mother with 0-6 months baby (based on recall)---------------------------->
+
+    <div [formGroup]="interviewWithLactatingMotherWithBaby" *ngIf="sectorOrSubsectorNumber === 52">
+        <p class="text-color">{{text}}</p>
+        <h4>4.2. Interview with Lactating mother with 0-6 months baby (based on recall)</h4>
+        <ion-list no-lines text-wrap radio-group formControlName="q421" [(ngModel)]="obj.q421">
+            <ion-label class="ess_item_lable">
+                4.2.1. Did she deliver at Public Health facility?
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of optionTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(45,d.name,'IWLMWMB', 'q421')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q421',45)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!interviewWithLactatingMotherWithBaby.controls.q421.valid  && (interviewWithLactatingMotherWithBaby.controls.q421.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list no-lines text-wrap radio-group formControlName="q422" [(ngModel)]="obj.q422" *ngIf="obj.q421==26">
+            <ion-label class="ess_item_lable">
+                4.2.2. If yes, Did she receive entitlements under JSY?
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of optionTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(46,d.name,'IWLMWMB', 'q422')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q422',46)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!interviewWithLactatingMotherWithBaby.controls.q422.valid  && (interviewWithLactatingMotherWithBaby.controls.q422.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-label class="ess_item_lable" *ngIf="obj.q421==26">
+            4.2.3. Entitlements under JSSK:
+        </ion-label>
+        <ion-list no-lines text-wrap radio-group formControlName="q423a" [(ngModel)]="obj.q423a" *ngIf="obj.q421==26">
+            <ion-label class="ess_item_lable">
+                4.2.3.a. Was she provided with free drugs?
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of optionTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(47,d.name,'IWLMWMB', 'q423a')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q423a',47)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!interviewWithLactatingMotherWithBaby.controls.q423a.valid  && (interviewWithLactatingMotherWithBaby.controls.q423a.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list no-lines text-wrap radio-group formControlName="q423b" [(ngModel)]="obj.q423b" *ngIf="obj.q421==26">
+            <ion-label class="ess_item_lable">
+                4.2.3.b. Was she provided free-diet at the facility?
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of optionTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(48,d.name,'IWLMWMB', 'q423b')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q423b',48)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!interviewWithLactatingMotherWithBaby.controls.q423b.valid  && (interviewWithLactatingMotherWithBaby.controls.q423b.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list no-lines text-wrap radio-group formControlName="q423c" [(ngModel)]="obj.q423c" *ngIf="obj.q421==26">
+            <ion-label class="ess_item_lable">
+                4.2.3.c. Was she given Blood transfusion free of cost?
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of optionTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(49,d.name,'IWLMWMB', 'q423c')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q423c',49)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!interviewWithLactatingMotherWithBaby.controls.q423c.valid  && (interviewWithLactatingMotherWithBaby.controls.q423c.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list no-lines text-wrap radio-group formControlName="q423d" [(ngModel)]="obj.q423d" *ngIf="obj.q421==26">
+            <ion-label class="ess_item_lable">
+                4.2.3.d. Was she provided free diagnostics?
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of optionTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(50,d.name,'IWLMWMB', 'q423d')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q423d',50)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!interviewWithLactatingMotherWithBaby.controls.q423d.valid  && (interviewWithLactatingMotherWithBaby.controls.q423d.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list no-lines text-wrap radio-group formControlName="q423e" [(ngModel)]="obj.q423e" *ngIf="obj.q421==26">
+            <ion-label class="ess_item_lable">
+                4.2.3.e. Did she avail free referral transport facility?
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of optionTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(51,d.name,'IWLMWMB', 'q423e')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q423e',51)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!interviewWithLactatingMotherWithBaby.controls.q423e.valid  && (interviewWithLactatingMotherWithBaby.controls.q423e.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list no-lines text-wrap *ngIf="obj.q421==26">
+            <ion-item>
+                <ion-label floating class="ess_item_lable">4.2.3.f. Did she receive entitlements under JSSK?</ion-label>
+                <ion-textarea #myInput423I rows="1" autosize  (keyup)="resize(myInput423I)" formControlName="q423I" [(ngModel)]="obj.q423I" type="text"></ion-textarea>
+            </ion-item>
+        </ion-list>
+    </div>
+
+
+
+    <!------------------Ask about services she received at the facility where she delivered---------------------------->
+
+    <div [formGroup]="askAboutServiceSheReceivedAtFacility" *ngIf="sectorOrSubsectorNumber === 53">
+        <p class="text-color">{{text}}</p>
+        <h4>4.2.4. Ask about services she received at the facility where she delivered</h4>
+        <ion-list no-lines text-wrap radio-group formControlName="q424a" [(ngModel)]="obj.q424a">
+            <ion-label class="ess_item_lable">
+                4.2.4.a. Was the privacy during delivery maintained?
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of optionTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(52,d.name,'AASSRFWSD', 'q424a')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q424a',52)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!askAboutServiceSheReceivedAtFacility.controls.q424a.valid  && (askAboutServiceSheReceivedAtFacility.controls.q424a.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list no-lines text-wrap radio-group formControlName="q424b" [(ngModel)]="obj.q424b">
+            <ion-label class="ess_item_lable">
+                4.2.4.b. Was staff at the health facility well behaved during stay?
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of optionTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(53,d.name,'AASSRFWSD', 'q424b')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q424b',53)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!askAboutServiceSheReceivedAtFacility.controls.q424b.valid  && (askAboutServiceSheReceivedAtFacility.controls.q424b.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list no-lines text-wrap radio-group formControlName="q424c" [(ngModel)]="obj.q424c">
+            <ion-label class="ess_item_lable">
+                4.2.4.c. Was the newborn dried with clean and sterile sheets/towels just after delivery?
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of optionTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(54,d.name,'AASSRFWSD', 'q424c')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q424c',54)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!askAboutServiceSheReceivedAtFacility.controls.q424c.valid  && (askAboutServiceSheReceivedAtFacility.controls.q424c.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list no-lines text-wrap radio-group formControlName="q424d" [(ngModel)]="obj.q424d">
+            <ion-label class="ess_item_lable">
+                4.2.4.d. Was the newborn weighed at birth?
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of optionTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(55,d.name,'AASSRFWSD', 'q424d')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q424d',55)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!askAboutServiceSheReceivedAtFacility.controls.q424d.valid  && (askAboutServiceSheReceivedAtFacility.controls.q424d.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list no-lines text-wrap radio-group formControlName="q424e" [(ngModel)]="obj.q424e">
+            <ion-label class="ess_item_lable">
+                4.2.4.e. Was breast feeding initiated within one hour after delivery?
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of optionTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(56,d.name,'AASSRFWSD', 'q424e')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q424e',56)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!askAboutServiceSheReceivedAtFacility.controls.q424e.valid  && (askAboutServiceSheReceivedAtFacility.controls.q424e.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list no-lines text-wrap radio-group formControlName="q424f" [(ngModel)]="obj.q424f">
+            <ion-label class="ess_item_lable">
+                4.2.4.f. Was the newborn given birth dose immunization in the health facility within 24hrs of birth?
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of optionTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(57,d.name,'AASSRFWSD', 'q424f')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q424f',57)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!askAboutServiceSheReceivedAtFacility.controls.q424f.valid  && (askAboutServiceSheReceivedAtFacility.controls.q424f.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list no-lines text-wrap radio-group formControlName="q424g" [(ngModel)]="obj.q424g">
+            <ion-label class="ess_item_lable">
+                4.2.4.g. Has she exclusively breast-fed the infant for 6 months?
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of optionTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(58,d.name,'AASSRFWSD', 'q424g')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q424g',58)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!askAboutServiceSheReceivedAtFacility.controls.q424g.valid  && (askAboutServiceSheReceivedAtFacility.controls.q424g.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list no-lines text-wrap radio-group formControlName="q424h" [(ngModel)]="obj.q424h">
+            <ion-label class="ess_item_lable">
+                4.2.4.h. Was she advised about maternal & newborn danger signs before discharge from the facility?
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of optionTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(59,d.name,'AASSRFWSD', 'q424h')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q424h',59)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!askAboutServiceSheReceivedAtFacility.controls.q424h.valid  && (askAboutServiceSheReceivedAtFacility.controls.q424h.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list no-lines text-wrap radio-group formControlName="q424i" [(ngModel)]="obj.q424i">
+            <ion-label class="ess_item_lable">
+                4.2.4.i. Is the MCP card completely filled?
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of optionTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(60,d.name,'AASSRFWSD', 'q424i')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q424i',60)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!askAboutServiceSheReceivedAtFacility.controls.q424i.valid  && (askAboutServiceSheReceivedAtFacility.controls.q424i.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list no-lines text-wrap radio-group formControlName="q424j" [(ngModel)]="obj.q424j">
+            <ion-label class="ess_item_lable">
+                4.2.4.j. Was she satisfied with all the services provided during ANC, delivery and PNC?
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of optionTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(61,d.name,'AASSRFWSD', 'q424j')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q424j',61)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!askAboutServiceSheReceivedAtFacility.controls.q424j.valid  && (askAboutServiceSheReceivedAtFacility.controls.q424j.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+    </div>
+
+    <!------------------Interview mother with a child of 6 months - 2 years---------------------------->
+
+    <div [formGroup]="interviewMothertWithChild" *ngIf="sectorOrSubsectorNumber === 54">
+        <p class="text-color">{{text}}</p>
+        <h4>4.3. Interview mother with a child of 6 months - 2 years:</h4>
+        <ion-list no-lines text-wrap radio-group formControlName="q431" [(ngModel)]="obj.q431">
+            <ion-label class="ess_item_lable">
+                4.3.1. Was ORS and Zinc used when child had last diarrhea episode?
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of optionTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(62,d.name,'IMWCM', 'q431')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q431',62)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!interviewMothertWithChild.controls.q431.valid  && (interviewMothertWithChild.controls.q431.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list no-lines text-wrap radio-group formControlName="q431a" [(ngModel)]="obj.q431a">
+            <ion-label class="ess_item_lable">
+                4.3.1.a. Is mother aware about ORS preparation and use?
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of optionTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(63,d.name,'IMWCM', 'q431a')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q431a',63)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!interviewMothertWithChild.controls.q431a.valid  && (interviewMothertWithChild.controls.q431a.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list no-lines text-wrap radio-group formControlName="q431b" [(ngModel)]="obj.q431b" *ngIf="obj.q431==26">
+            <ion-label class="ess_item_lable">
+                4.3.1.b. If yes, did ASHA replenish ORS/Zinc during her visit?
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of optionTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(64,d.name,'IMWCM', 'q431b')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q431b',64)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!interviewMothertWithChild.controls.q431b.valid  && (interviewMothertWithChild.controls.q431b.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list no-lines text-wrap radio-group formControlName="q432" [(ngModel)]="obj.q432">
+            <ion-label class="ess_item_lable">
+                4.3.2. Was Syp. IFA available at Household?
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of optionTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(65,d.name,'IMWCM', 'q432')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q432',65)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!interviewMothertWithChild.controls.q432.valid  && (interviewMothertWithChild.controls.q432.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list no-lines text-wrap radio-group formControlName="q433" [(ngModel)]="obj.q433">
+            <ion-label class="ess_item_lable">
+                4.3.3. Did ASHA perform home visits during first six weeks of life?
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of optionTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(66,d.name,'IMWCM', 'q433')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q433',66)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!interviewMothertWithChild.controls.q433.valid  && (interviewMothertWithChild.controls.q433.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list no-lines text-wrap radio-group formControlName="q434" [(ngModel)]="obj.q434">
+            <ion-label class="ess_item_lable">
+                4.3.4. Does mother practice Complementary feeding?
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of optionTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(67,d.name,'IMWCM', 'q434')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q434',67)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!interviewMothertWithChild.controls.q434.valid  && (interviewMothertWithChild.controls.q434.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list no-lines text-wrap radio-group formControlName="q435" [(ngModel)]="obj.q435">
+            <ion-label class="ess_item_lable">
+                4.3.5. Was Family planning counseling provided by ASHA?
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of optionTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(68,d.name,'IMWCM', 'q435')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q435',68)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!interviewMothertWithChild.controls.q435.valid  && (interviewMothertWithChild.controls.q435.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list no-lines text-wrap radio-group formControlName="q436" [(ngModel)]="obj.q436">
+            <ion-label class="ess_item_lable">
+                4.3.6. Was Family planning commodities (Condoms/OCP and ECP) provided by ASHA?
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of optionTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(69,d.name,'IMWCM', 'q436')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q436',69)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!interviewMothertWithChild.controls.q436.valid  && (interviewMothertWithChild.controls.q436.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list no-lines text-wrap radio-group formControlName="q437" [(ngModel)]="obj.q437">
+            <ion-label class="ess_item_lable" text-wrap>4.3.7. Family health seeking behaviour influenced by IEC/BCC/IPC activities </ion-label>
+        </ion-list>
+        <!-- <ion-list no-lines text-wrap radio-group formControlName="q437" [(ngModel)]="obj.q437">
+            <ion-label class="ess_item_lable">
+                4.3.7. Did any IEC/BCC/IPC activity initiate or enhance family's health seeking behavior?
+            </ion-label>
+            <ion-textarea #myInputq437 rows="1" autosize  (keyup)="resize(myInputq437)" formControlName="q437" [(ngModel)]="obj.q437" type="text"></ion-textarea>
+        </ion-list> -->
+        <ion-list no-lines text-wrap radio-group formControlName="q437a" [(ngModel)]="obj.q437a">
+            <ion-label class="ess_item_lable">
+                4.3.7.a. IPC by ASHA/ANM or other health staff:
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of optionTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(71,d.name,'IMWCM', 'q437a')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q437a',71)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!interviewMothertWithChild.controls.q437a.valid  && (interviewMothertWithChild.controls.q437a.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list no-lines text-wrap radio-group formControlName="q437b" [(ngModel)]="obj.q437b">
+            <ion-label class="ess_item_lable">
+                4.3.7.b. Hand out/Booklets:
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of optionTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(72,d.name,'IMWCM', 'q437b')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q437b',72)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!interviewMothertWithChild.controls.q437b.valid  && (interviewMothertWithChild.controls.q437b.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list no-lines text-wrap radio-group formControlName="q437c" [(ngModel)]="obj.q437c">
+            <ion-label class="ess_item_lable">
+                4.3.7.c. Audio visual aids:
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of optionTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(73,d.name,'IMWCM', 'q437c')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q437c',73)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!interviewMothertWithChild.controls.q437c.valid  && (interviewMothertWithChild.controls.q437c.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list no-lines text-wrap radio-group formControlName="q437d" [(ngModel)]="obj.q437d">
+            <ion-label class="ess_item_lable">
+                4.3.7.d. Hoardings/Wall paintings/Banner/Poster:
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of optionTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(74,d.name,'IMWCM', 'q437d')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q437d',74)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!interviewMothertWithChild.controls.q437d.valid  && (interviewMothertWithChild.controls.q437d.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list no-lines text-wrap radio-group formControlName="q437e" [(ngModel)]="obj.q437e">
+            <ion-label class="ess_item_lable">
+                4.3.7.e. Any other IEC/BCC activity:
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of optionTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(75,d.name,'IMWCM', 'q437e');validate_q437e_OtherField($event)" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q437e',75)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!interviewMothertWithChild.controls.q437e.valid  && (interviewMothertWithChild.controls.q437e.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list no-lines text-wrap *ngIf="obj.q437e==26">
+            <ion-item>
+                <ion-label floating class="ess_item_lable">4.3.7.e.i. If Others, Please specify:</ion-label>
+                <ion-textarea  formControlName="q437eI" [(ngModel)]="obj.q437eI" type="text" #myInput437 rows="1" autosize  (keyup)="resize(myInput437)" (paste)="onPaste($event,'q437eI')" (keydown)="_alphabetsKeyDown($event)" (keypress)="_lengthKeyPress($event);_alphabetsKeyPress($event)"></ion-textarea>
+            </ion-item>
+            <ion-item *ngIf="!interviewMothertWithChild.controls.q437eI.valid  && (interviewMothertWithChild.controls.q437eI.dirty || finalizeAttempt)">
+                <p>Please enter a valid name (The character '.' and ',' is allowed.).</p>
+            </ion-item>
+        </ion-list>
+    </div>
+
+    <!------------------Interview with beneficiaries (Mothers & Pregnant women) pertaining to MCTFC---------------------------->
+
+    <div [formGroup]="interviewWithBeneficiariesToMctfc" *ngIf="sectorOrSubsectorNumber === 55">
+        <p class="text-color">{{text}}</p>
+        <h4>4.4. Interview with beneficiaries (Mothers & Pregnant women) pertaining to MCTFC</h4>
+        <ion-list no-lines text-wrap radio-group formControlName="q441" [(ngModel)]="obj.q441">
+            <ion-label class="ess_item_lable">
+                4.4.1. Did she receive a call from Mother and Child Tracking Facilitation Centre, Govt of India, Delhi?
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of optionTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(76,d.name,'IWBMPWPM', 'q441')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q441',76)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!interviewWithBeneficiariesToMctfc.controls.q441.valid  && (interviewWithBeneficiariesToMctfc.controls.q441.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list no-lines text-wrap radio-group formControlName="q442" [(ngModel)]="obj.q442" *ngIf="obj.q441==26">
+            <ion-label class="ess_item_lable">
+                4.4.2. Was the caller courteous to her during the call?
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of optionTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(77,d.name,'IWBMPWPM', 'q442')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q442',77)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!interviewWithBeneficiariesToMctfc.controls.q442.valid  && (interviewWithBeneficiariesToMctfc.controls.q442.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list no-lines text-wrap radio-group formControlName="q443" [(ngModel)]="obj.q443" *ngIf="obj.q441==26">
+            <ion-label class="ess_item_lable">
+                4.4.3. Whether the caller was clear in communication with her?
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of optionTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(78,d.name,'IWBMPWPM', 'q443')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q443',78)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!interviewWithBeneficiariesToMctfc.controls.q443.valid  && (interviewWithBeneficiariesToMctfc.controls.q443.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list no-lines text-wrap radio-group formControlName="q444" [(ngModel)]="obj.q444" *ngIf="obj.q441==26">
+            <ion-label class="ess_item_lable">
+                4.4.4. Was she satisfied by the resolution on her query provided by the caller?
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of optionTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(79,d.name,'IWBMPWPM', 'q444')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q444',79)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!interviewWithBeneficiariesToMctfc.controls.q444.valid  && (interviewWithBeneficiariesToMctfc.controls.q444.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list no-lines text-wrap radio-group formControlName="q445" [(ngModel)]="obj.q445" *ngIf="obj.q441==26">
+            <ion-label class="ess_item_lable">
+                4.4.5. Whether a doctor spoke with her to resolve her query?
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of optionTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(80,d.name,'IWBMPWPM', 'q445')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q445',80)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!interviewWithBeneficiariesToMctfc.controls.q445.valid  && (interviewWithBeneficiariesToMctfc.controls.q445.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list class="top_margin" no-lines *ngIf="obj.q441==26">
+            <ion-label class="ess_item_lable" text-wrap>4.4.6. Whether the information provided to her was helpful? </ion-label>
+        </ion-list>
+        <ion-list class="left_margin" no-lines text-wrap radio-group formControlName="q446a" [(ngModel)]="obj.q446a" *ngIf="obj.q441==26">
+            <ion-label class="ess_item_lable">
+                4.4.6.a. During her pregnancy:
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of optionTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(81,d.name,'IWBMPWPM', 'q446a')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q446a',81)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!interviewWithBeneficiariesToMctfc.controls.q446a.valid  && (interviewWithBeneficiariesToMctfc.controls.q446a.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list class="left_margin" no-lines text-wrap radio-group formControlName="q446b" [(ngModel)]="obj.q446b" *ngIf="obj.q441==26">
+            <ion-label class="ess_item_lable">
+                4.4.6.b. Taking care of her child:
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of optionTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(82,d.name,'IWBMPWPM', 'q446b')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q446b',82)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!interviewWithBeneficiariesToMctfc.controls.q446b.valid  && (interviewWithBeneficiariesToMctfc.controls.q446b.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list class="left_margin" no-lines text-wrap radio-group formControlName="q446c" [(ngModel)]="obj.q446c" *ngIf="obj.q441==26">
+            <ion-label class="ess_item_lable">
+                4.4.6.c. Family planning:
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of optionTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(83,d.name,'IWBMPWPM', 'q446c')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q446c',83)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!interviewWithBeneficiariesToMctfc.controls.q446c.valid  && (interviewWithBeneficiariesToMctfc.controls.q446c.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list no-lines text-wrap radio-group formControlName="q447" [(ngModel)]="obj.q447" *ngIf="obj.q441==26">
+            <ion-label class="ess_item_lable">
+                4.4.7. Has she received recorded voice messages over phone related to maternal health, Child care, immunization and family planning?
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of optionTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(84,d.name,'IWBMPWPM', 'q447')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q447',84)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!interviewWithBeneficiariesToMctfc.controls.q447.valid  && (interviewWithBeneficiariesToMctfc.controls.q447.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+    </div>
+
+
+    <!------------------Interview with family having Adolescents---------------------------->
+
+    <div [formGroup]="interviewWithFamilyHavingAdolescents" *ngIf="sectorOrSubsectorNumber === 56">
+        <p class="text-color">{{text}}</p>
+        <h4>4.5. Interview with family having Adolescents</h4>
+        <ion-list no-lines text-wrap radio-group formControlName="q451" [(ngModel)]="obj.q451">
+            <ion-label class="ess_item_lable">
+                4.5.1. Did the Adolescent in the family receive IFA supplementation?
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of optionTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(85,d.name,'IWFHA', 'q451')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q451',85)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!interviewWithFamilyHavingAdolescents.controls.q451.valid  && (interviewWithFamilyHavingAdolescents.controls.q451.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list no-lines text-wrap radio-group formControlName="q452" [(ngModel)]="obj.q452">
+            <ion-label class="ess_item_lable">
+                4.5.2. Was the mother/adolescent girl counseled on Menstrual hygiene?
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of optionTypeDetails" no-lines >
+                <ion-label>{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(86,d.name,'IWFHA', 'q452')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q452',86)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!interviewWithFamilyHavingAdolescents.controls.q452.valid  && (interviewWithFamilyHavingAdolescents.controls.q452.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list no-lines text-wrap radio-group formControlName="q453" [(ngModel)]="obj.q453">
+            <ion-label class="ess_item_lable">
+                4.5.3. Has the adolescent ever visited AFHC?
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of optionTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(87,d.name,'IWFHA', 'q453')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q453',87)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!interviewWithFamilyHavingAdolescents.controls.q453.valid  && (interviewWithFamilyHavingAdolescents.controls.q453.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+    </div>
+
+    <!------------------Interview with Household with Home delivery---------------------------->
+
+    <div [formGroup]="interviewWithHouseholdHomeDelivery" *ngIf="sectorOrSubsectorNumber === 57">
+        <p class="text-color">{{text}}</p>
+        <h4>4.6. Interview with Household with Home delivery</h4>
+        <ion-list class="top_margin" no-lines>
+            <ion-label class="ess_item_lable" text-wrap>4.6.1. Reason for Home delivery?</ion-label>
+        </ion-list>
+        <ion-list class="left_margin" no-lines text-wrap radio-group formControlName="q461a" [(ngModel)]="obj.q461a">
+            <ion-label class="ess_item_lable">
+                4.6.1.a. Traditional attitude:
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of optionTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(88,d.name,'IHHD', 'q461a')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q461a',88)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!interviewWithHouseholdHomeDelivery.controls.q461a.valid  && (interviewWithHouseholdHomeDelivery.controls.q461a.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list class="left_margin" no-lines text-wrap radio-group formControlName="q461b" [(ngModel)]="obj.q461b">
+            <ion-label class="ess_item_lable">
+                4.6.1.b. Accessibility issues:
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of optionTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(89,d.name,'IHHD', 'q461b')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q461b',89)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!interviewWithHouseholdHomeDelivery.controls.q461b.valid  && (interviewWithHouseholdHomeDelivery.controls.q461b.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list class="left_margin" no-lines text-wrap radio-group formControlName="q461c" [(ngModel)]="obj.q461c">
+            <ion-label class="ess_item_lable">
+                4.6.1.c. Economic reasons:
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of optionTypeDetails" no-lines>
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(90,d.name,'IHHD', 'q461c')" value={{d.id}}  #radiovar (press)="radioPressed(radiovar,$event, 'q461c',90)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!interviewWithHouseholdHomeDelivery.controls.q461c.valid  && (interviewWithHouseholdHomeDelivery.controls.q461c.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list class="left_margin" no-lines text-wrap radio-group formControlName="q461d" [(ngModel)]="obj.q461d">
+            <ion-label class="ess_item_lable">
+                4.6.1.d. Benefits of institutional delivery unknown:
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of optionTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(91,d.name,'IHHD', 'q461d')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q461d',91)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!interviewWithHouseholdHomeDelivery.controls.q461d.valid  && (interviewWithHouseholdHomeDelivery.controls.q461d.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list class="left_margin" no-lines text-wrap radio-group formControlName="q461e" [(ngModel)]="obj.q461e">
+            <ion-label class="ess_item_lable">
+                4.6.1.e. Any other causes:
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of optionTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(92,d.name,'IHHD', 'q461e');validate_q461e_OtherField($event)" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q461e',92)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!interviewWithHouseholdHomeDelivery.controls.q461e.valid  && (interviewWithHouseholdHomeDelivery.controls.q461e.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list class="left_margin" no-lines text-wrap *ngIf="obj.q461e==26">
+            <ion-item>
+                <ion-label floating class="ess_item_lable">4.6.1.e.i. If Others, Please specify:</ion-label>
+                <ion-textarea   formControlName="q461eI" [(ngModel)]="obj.q461eI" type="text" #myInput461 rows="1" autosize (paste)="onPaste($event,'q461eI')" (keyup)="resize(myInput461)" (keydown)="_alphabetsKeyDown($event)" (keypress)="_lengthKeyPress($event);_alphabetsKeyPress($event)"></ion-textarea>
+            </ion-item>
+            <ion-item *ngIf="!interviewWithHouseholdHomeDelivery.controls.q461eI.valid  && (interviewWithHouseholdHomeDelivery.controls.q461eI.dirty || finalizeAttempt)">
+                <p>Please enter a valid name (The character '.' and ',' is allowed.).</p>
+            </ion-item>
+        </ion-list>
+        <ion-list class="top_margin" no-lines>
+            <ion-label class="ess_item_lable" text-wrap>4.6.2. Who conducted Home delivery? </ion-label>
+        </ion-list>
+        <ion-list class="left_margin" no-lines text-wrap radio-group formControlName="q462a" [(ngModel)]="obj.q462a">
+            <ion-label class="ess_item_lable">
+                4.6.2.a. Skilled Birth Attendant (i.e. assisted by doctor/nurse/ANM):
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of optionTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(93,d.name,'IHHD', 'q462a')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q462a',93)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!interviewWithHouseholdHomeDelivery.controls.q462a.valid  && (interviewWithHouseholdHomeDelivery.controls.q462a.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list class="left_margin" no-lines text-wrap radio-group formControlName="q462b" [(ngModel)]="obj.q462b">
+            <ion-label class="ess_item_lable">
+                4.6.2.b. Traditional Birth Attendant (TBA):
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of optionTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(94,d.name,'IHHD', 'q462b')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q462b',94)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!interviewWithHouseholdHomeDelivery.controls.q462b.valid  && (interviewWithHouseholdHomeDelivery.controls.q462b.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list class="left_margin" no-lines text-wrap radio-group formControlName="q462c" [(ngModel)]="obj.q462c">
+            <ion-label class="ess_item_lable">
+                4.6.2.c. Family or Relatives:
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of optionTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(95,d.name,'IHHD', 'q462c')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q462c',95)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!interviewWithHouseholdHomeDelivery.controls.q462c.valid  && (interviewWithHouseholdHomeDelivery.controls.q462c.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list class="left_margin" no-lines text-wrap radio-group formControlName="q463" [(ngModel)]="obj.q463">
+            <ion-label class="ess_item_lable">
+                4.6.3. Is mother/child availing any post-natal services from a health facility?
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of optionTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(96,d.name,'IHHD', 'q463')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q463',96)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!interviewWithHouseholdHomeDelivery.controls.q463.valid  && (interviewWithHouseholdHomeDelivery.controls.q463.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+    </div>
+    <!------------------School/AWC visit- Interview with WIFS Nodal teacher/AWW---------------------------->
+
+    <div [formGroup]="interviewWithWifsNodalteacherAww" *ngIf="sectorOrSubsectorNumber === 58">
+        <p class="text-color">{{text}}</p>
+        <h4>4.7. School/AWC visit- Interview with WIFS Nodal teacher/AWW</h4>
+        <ion-list no-lines text-wrap radio-group formControlName="q471" [(ngModel)]="obj.q471">
+            <ion-label class="ess_item_lable">
+                4.7.1. Are IFA tabs under WIFS currently available?
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of optionTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(97,d.name,'SAIWWNTA', 'q471')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q471',97)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!interviewWithWifsNodalteacherAww.controls.q471.valid  && (interviewWithWifsNodalteacherAww.controls.q471.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list no-lines text-wrap radio-group formControlName="q471a" [(ngModel)]="obj.q471a">
+            <ion-label class="ess_item_lable">
+                4.7.1.a. Any Stock-out in last 6 months?
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of optionTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(98,d.name,'SAIWWNTA', 'q471a')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q471a',98)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!interviewWithWifsNodalteacherAww.controls.q471a.valid  && (interviewWithWifsNodalteacherAww.controls.q471a.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list no-lines text-wrap radio-group formControlName="q472" [(ngModel)]="obj.q472">
+            <ion-label class="ess_item_lable">
+                4.7.2. Was deworming done in the last six months?
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of optionTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(99,d.name,'SAIWWNTA', 'q472')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q472',99)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!interviewWithWifsNodalteacherAww.controls.q472.valid  && (interviewWithWifsNodalteacherAww.controls.q472.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list no-lines text-wrap radio-group formControlName="q473" [(ngModel)]="obj.q473">
+            <ion-label class="ess_item_lable">
+                4.7.3. Whether WIFS report submitted for last month?
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of optionTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(100,d.name,'SAIWWNTA', 'q473')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q473',100)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!interviewWithWifsNodalteacherAww.controls.q473.valid  && (interviewWithWifsNodalteacherAww.controls.q473.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list no-lines text-wrap radio-group formControlName="q474" [(ngModel)]="obj.q474">
+            <ion-label class="ess_item_lable">
+                4.7.4. Whether screening of children under RBSK done?
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of optionTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(101,d.name,'SAIWWNTA', 'q474')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q474',101)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!interviewWithWifsNodalteacherAww.controls.q474.valid  && (interviewWithWifsNodalteacherAww.controls.q474.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list no-lines text-wrap radio-group formControlName="q474a" [(ngModel)]="obj.q474a">
+            <ion-label class="ess_item_lable">
+                4.7.4.a. Are referrals of children done?
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of optionTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(102,d.name,'SAIWWNTA', 'q474a')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q474a',102)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!interviewWithWifsNodalteacherAww.controls.q474a.valid  && (interviewWithWifsNodalteacherAww.controls.q474a.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list class="top_margin" no-lines>
+            <ion-label class="ess_item_lable" text-wrap>4.7.a. Interview with eligible students in at least two classrooms during school visit </ion-label>
+        </ion-list>
+        <ion-list class="left_margin" no-lines text-wrap radio-group formControlName="q475" [(ngModel)]="obj.q475">
+            <ion-label class="ess_item_lable">
+                4.7.5. Are they given IFA tab every week?
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of optionTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(103,d.name,'SAIWWNTA', 'q475')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q475',103)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!interviewWithWifsNodalteacherAww.controls.q475.valid  && (interviewWithWifsNodalteacherAww.controls.q475.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+        <ion-list no-lines text-wrap radio-group formControlName="q476" [(ngModel)]="obj.q476">
+            <ion-label class="ess_item_lable">
+                4.7.6. Has RBSK screening done by health team in last one year?
+            </ion-label>
+            <ion-item class="ess_radio" *ngFor="let d of optionTypeDetails" no-lines >
+                <ion-label class="ess_item_lable_sub">{{d.name}}</ion-label>
+                <ion-radio (click)="radclick(104,d.name,'SAIWWNTA', 'q476')" value={{d.id}} #radiovar (press)="radioPressed(radiovar,$event, 'q476',104)"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="!interviewWithWifsNodalteacherAww.controls.q476.valid  && (interviewWithWifsNodalteacherAww.controls.q476.dirty || finalizeAttempt)">
+                <p>Please select option.</p>
+            </ion-item>
+        </ion-list>
+    </div>
+  <!---------------Plan of Action Section Started-------------------------->
+    <div  *ngIf="sectorOrSubsectorNumber === 112 || sectorOrSubsectorNumber === 113 || sectorOrSubsectorNumber === 114 || sectorOrSubsectorNumber === 115 || sectorOrSubsectorNumber === 116">
+        <h4 *ngIf="sectorOrSubsectorNumber === 112">VHND</h4>
+        <h4 *ngIf="sectorOrSubsectorNumber === 113">ANM</h4>
+        <h4 *ngIf="sectorOrSubsectorNumber === 114">ASHA</h4>
+        <h4 *ngIf="sectorOrSubsectorNumber === 115">Household</h4>
+        <h4 *ngIf="sectorOrSubsectorNumber === 116">School/AWC</h4>
+           <button ion-button  round [disabled]="!enableAdd || sent || finalized" (click)="addPlanOfActionItem()">
+            <ion-icon name="plus">+</ion-icon> 
+          </button>
+            <ion-list >
+               <ion-item *ngFor="let d of obj.planOfAction | myfilter:sectorOrSubsectorNumber; let i=index" text-wrap>
+                <span (click)="toggleGroup(i);forEdit ? filterResponsibilityByOrganiztion(d.organizationId, d.levelOfIntervention) : '';planofactionObjectAssign(d)" class="acordion-title" [ngClass]="{active: isGroupShown(i)}">
+                    <span *ngIf="sectorOrSubsectorNumber === 112">VHND</span>
+                    <span *ngIf="sectorOrSubsectorNumber === 113">ANM</span>
+                    <span *ngIf="sectorOrSubsectorNumber === 114">ASHA</span>
+                    <span *ngIf="sectorOrSubsectorNumber === 115">Household</span>
+                    <span *ngIf="sectorOrSubsectorNumber === 116">School/AWC</span> ({{i+1}})
+                  <ion-icon color="success" item-right [name]="isGroupShown(i) ? 'arrow-dropdown' : 'arrow-dropright'"></ion-icon>
+                </span>
+                <button ion-button icon-only clear [disabled]="sent || finalized" (click)="removePlanOfActionItem(d)">
+                    <ion-icon name="trash"></ion-icon>
+                </button>
+                <div *ngIf="isGroupShown(i)">
+                      <ion-item>
+                          <ion-label floating class="ess_item_lable">Intervention/Activities identified:</ion-label>
+                           <ion-textarea type="text" rows="1" #myInputIntervention (keyup)="getValidateAcordion(d);resize(myInputIntervention);_lengthKeyUpforAcordion(d.intervention_activities,d);" (keypress)="_alphaNumericKeyPress($event)"  
+                               autosize [(ngModel)]="d.intervention_activities" [disabled]="sent || finalized" (paste)="onPastePOA($event,d,'intervention_activities')"></ion-textarea>
+                      </ion-item>
+                      <ion-item>
+                        <ion-label floating *ngIf="!is_web" floating class="ess_item_lable">Level of intervention:</ion-label>
+                        <ion-label floating *ngIf="is_web" class="ess_item_lable">Level of intervention:</ion-label>
+                        <ion-select [(ngModel)]="d.levelOfIntervention" (ionChange)="getValidateAcordion(d); filterResponsibilityByOrganiztion(d.organizationId, d.levelOfIntervention); d.organizationId = null; d.responsibility = null" [selectOptions]="selectLevelOfInterventionOptions" [disabled]="sent || finalized">
+                            <ion-option *ngFor="let r of roles | orderBy: 'roleId'" [value]="r.roleId">{{r.roleName}}</ion-option>
+                            <ion-option disabled *ngIf="roles == null || roles.length < 1">No Data Available</ion-option>
+                        </ion-select>
+                      </ion-item>
+                      <ion-item (click)="onclickSelectOrganization()">
+                        <ion-label floating *ngIf="!is_web" floating class="ess_item_lable">Organization:</ion-label>
+                        <ion-label floating *ngIf="is_web" class="ess_item_lable">Organization:</ion-label>
+                        <ion-select [disabled]="sent || finalized || d.levelOfIntervention == null" [(ngModel)]="d.organizationId"  (ionChange)="getValidateAcordion(d); filterResponsibilityByOrganiztion(d.organizationId, d.levelOfIntervention); d.responsibility = null" [selectOptions]="selectOrganizationOptions" >
+                            <ion-option *ngFor="let des of planOfActionOrganizations | orderBy: 'organizationName'" [value]="des.id">{{des.organizationName}}</ion-option>
+                            <ion-option disabled *ngIf="planOfActionOrganizations == null || planOfActionOrganizations.length < 1">No Data Available</ion-option>
+                        </ion-select>
+                      </ion-item>
+                      <ion-item (click)="onclickSelectResponsibility()">
+                        <ion-label floating *ngIf="!is_web" floating class="ess_item_lable">Responsibility:</ion-label>
+                        <ion-label floating *ngIf="is_web" class="ess_item_lable">Responsibility:</ion-label>
+                        <ion-select [(ngModel)]="d.responsibility"  (ionChange)="getValidateAcordion(d)" [selectOptions]="selectResponsibilityOptions" [disabled]="sent || finalized || d.organizationId == null">
+                            <ion-option *ngFor="let des of designationByOrg" [value]="des.doarMappingId">{{des.name}}</ion-option>
+                            <ion-option disabled *ngIf="designationByOrg == null || designationByOrg.length < 1">No Data Available</ion-option>
+                        </ion-select>
+                      </ion-item>
+                       <!-- <ion-item>
+                          <ion-label floating class="ess_item_lable">Timeline (in months):</ion-label>
+                           <ion-input type="number" (keyup)="getValidateAcordion(d);_numberKeyUp($event,d.timeline, d)" (keypress)="_numberKeyPressforTimeline($event);"  pattern="(^[0-9]{1,2}$)" (paste)="onPaste($event,'d1')" [(ngModel)]="d.timeline" [disabled]="sent || finalized"></ion-input>
+                      </ion-item> -->
+                      <ion-item>
+                        <ion-label floating class="ess_item_lable">Timeline (in months):</ion-label>
+                        <ion-select [(ngModel)]="d.timeline"  (ionChange)="getValidateAcordion(d)" [selectOptions]="selectTimelineOptions" [disabled]="sent || finalized">
+                            <ion-option *ngFor="let time of timelines" [value]="time">{{time}}</ion-option>
+                        </ion-select>
+                     </ion-item>
+                </div>
+              </ion-item>
+            </ion-list>
+
+            <div *ngIf="isLvData && (!this.finalized && !this.sent)">Last visit data:</div>
+            <ion-list *ngIf="isLvData && (!this.finalized && !this.sent)">
+               <ion-item *ngFor="let d of lvobj | myfilter:sectorOrSubsectorNumber; let i=index" text-wrap>
+                <span (click)="toggleGroup1(i)" class="acordion-title" [ngClass]="{active: isGroupShown1(i)}">
+                    <span *ngIf="sectorOrSubsectorNumber === 112">VHND</span>
+                    <span *ngIf="sectorOrSubsectorNumber === 113">ANM</span>
+                    <span *ngIf="sectorOrSubsectorNumber === 114">ASHA</span>
+                    <span *ngIf="sectorOrSubsectorNumber === 115">Household</span>
+                    <span *ngIf="sectorOrSubsectorNumber === 116">School/AWC</span> ({{i+1}})
+                  <ion-icon color="success" item-right [name]="isGroupShown1(i) ? 'arrow-dropdown' : 'arrow-dropright'"></ion-icon>
+                </span>
+                <div *ngIf="isGroupShown1(i)">
+                      <ion-item>
+                          <ion-label floating class="ess_item_lable">Intervention/Activities identified:</ion-label>
+                           <ion-textarea type="text" disabled rows="1" autosize [(ngModel)]="d.intervention_activities"></ion-textarea>
+                      </ion-item>
+                      <ion-item>
+                        <ion-label floating *ngIf="!is_web" floating class="ess_item_lable">Level of intervention:</ion-label>
+                        <ion-label floating *ngIf="is_web" class="ess_item_lable">Level of intervention:</ion-label>
+                        <ion-select [(ngModel)]="d.levelOfIntervention" disabled>
+                            <ion-option *ngFor="let r of roles" [value]="r.roleId">{{r.roleName}}</ion-option>
+                        </ion-select>
+                      </ion-item>
+                      <ion-item>
+                        <ion-label floating *ngIf="!is_web" floating class="ess_item_lable">Organization:</ion-label>
+                        <ion-label floating *ngIf="is_web" class="ess_item_lable">Organization:</ion-label>
+                        <ion-select disabled [(ngModel)]="d.organizationId">
+                            <ion-option *ngFor="let des of planOfActionOrganizations | orderBy: 'organizationName'" [value]="des.id">{{des.organizationName}}</ion-option>
+                        </ion-select>
+                      </ion-item>
+                      <ion-item>
+                        <ion-label floating *ngIf="!is_web" floating class="ess_item_lable">Responsibility:</ion-label>
+                        <ion-label floating *ngIf="is_web" class="ess_item_lable">Responsibility:</ion-label>
+                        <ion-select [(ngModel)]="d.responsibility" disabled>
+                            <ion-option *ngFor="let des of designations" [value]="des.doarMappingId">{{des.name}}</ion-option>
+                        </ion-select>
+                      </ion-item>
+                       <ion-item>
+                          <ion-label floating class="ess_item_lable">Timeline (in months):</ion-label>
+                           <ion-input type="number" disabled [(ngModel)]="d.timeline"></ion-input>
+                      </ion-item>
+                </div>
+              </ion-item>
+            </ion-list>
+    </div> 
+    <!------------------Geo co-ordinate---------------------------->
+
+    <div [formGroup]="geoCordinate" *ngIf="sectorOrSubsectorNumber === 7">
+        <h4>Geo co-ordinate</h4>
+        <ion-list no-lines text-wrap>
+            <ion-label text-wrap class="ess_item_lable">Facility In-charge signature:</ion-label>
+            <ion-item text-center>
+                <button ion-button *ngIf="!is_web" [disabled]="sent || finalized" full blue_green (click)="openSigModal('facility')">Capture signature</button>
+                <button ion-button *ngIf="is_web" class="buttonSize" [disabled]="sent || finalized" full blue_green (click)="openSigModal('facility')">Capture signature</button>
+            </ion-item>
+            <ion-item *ngIf="!geoCordinate.controls.f_img.valid  && (geoCordinate.controls.f_img.dirty || finalizeAttempt)">
+                <p>Please provide signature.</p>
+            </ion-item>
+            <ion-item *ngIf="obj.f_img">
+                <img id ="facility_incharge_id" class="ess-signatue" [src]="obj.f_img">
+            </ion-item>
+        </ion-list>
+        <ion-list no-lines text-wrap>
+            <ion-label text-wrap class="ess_item_lable"> Supervisor signature:</ion-label>
+            <ion-item text-center>
+                <button  ion-button *ngIf="!is_web" [disabled]="sent || finalized" full blue_green (click)="openSigModal('supervisor')" >Capture signature</button>
+                <button  ion-button *ngIf="is_web" class="buttonSize" [disabled]="sent || finalized" full blue_green (click)="openSigModal('supervisor')" >Capture signature</button>
+            </ion-item>
+            <ion-item *ngIf="!geoCordinate.controls.s_img.valid  && (geoCordinate.controls.s_img.dirty || finalizeAttempt)">
+                <p>Please provide signature.</p>
+            </ion-item>
+            <ion-item *ngIf="obj.s_img">
+                <img id ="supervisor_id" class="ess-signatue" [src]="obj.s_img">
+            </ion-item>
+        </ion-list>
+        <ion-list no-lines text-wrap>
+            <ion-label text-wrap class="ess_item_lable"> Geo co-ordinate:</ion-label>
+            <ion-item>
+                <button ion-button *ngIf="!is_web" [disabled]="sent || finalized" full secondary (click)="captureGPS()">Capture Geo co-ordinate</button>
+                <button ion-button *ngIf="is_web" class="buttonSize" [disabled]="sent || finalized" full secondary (click)="captureGPS()">Capture Geo co-ordinate</button>
+            </ion-item>
+            <ion-item *ngIf="gpsFlag">Latitude: {{latitude}} </ion-item>
+            <ion-item *ngIf="gpsFlag">Longitude: {{longitude}} </ion-item>
+        </ion-list>
+        <ion-list no-lines text-wrap>
+            <ion-label text-wrap class="ess_item_lable"> Image 1:</ion-label>
+            <ion-item>
+                <button ion-button [disabled]="sent || finalized" block primary (click)="captureImage('img1')" *ngIf="!chooseImage">Capture Image</button>
+                <input *ngIf="chooseImage" [disabled]="sent || finalized" type="file" name="img1" id="img1" (change)="handleInputChange($event,'img1')" accept="image/*">
+                <img id="image1" class=ess-signatue>
+            </ion-item>
+            <ion-item *ngIf="!geoCordinate.controls.img1.valid  && (geoCordinate.controls.img1.dirty || finalizeAttempt)">
+                <p>Please enter a valid name.</p>
+            </ion-item>
+             <ion-item *ngIf="obj.img1">
+                <img id ="c_image1" class="ess-signatue" [src]="obj.img1">
+            </ion-item>
+        </ion-list>
+        <ion-list no-lines text-wrap>
+            <ion-label text-wrap class="ess_item_lable"> Image 2:</ion-label>
+            <ion-item>
+                <button ion-button [disabled]="sent || finalized" block primary (click)="captureImage('img2')" *ngIf="!chooseImage">Capture Image</button>
+                <input *ngIf="chooseImage" [disabled]="sent || finalized" type="file" name="img2" id="img2" (change)="handleInputChange($event,'img2')" accept="image/*">
+            </ion-item>
+            <ion-item *ngIf="!geoCordinate.controls.img2.valid  && (geoCordinate.controls.img2.dirty || finalizeAttempt)">
+                <p>Please enter a valid name.</p>
+            </ion-item>
+            <ion-item *ngIf="obj.img2">
+                <img id ="c_image2" class="ess-signatue" [src]="obj.img2">
+            </ion-item>
+        </ion-list>
+        <ion-list no-lines text-wrap>
+            <ion-label text-wrap class="ess_item_lable"> Image 3:</ion-label>
+            <ion-item>
+                <button ion-button [disabled]="sent || finalized" block primary (click)="captureImage('img3')" *ngIf="!chooseImage">Capture Image</button>
+                <input *ngIf="chooseImage" [disabled]="sent || finalized" type="file" name="img3" id="img3" (change)="handleInputChange($event,'img3')" accept="image/*">
+            </ion-item>
+            <ion-item *ngIf="!geoCordinate.controls.img3.valid  && (geoCordinate.controls.img3.dirty || finalizeAttempt)">
+                <p>Please enter a valid name.</p>
+            </ion-item>
+            <ion-item *ngIf="obj.img3">
+                <img id ="c_image3" class="ess-signatue" [src]="obj.img3">
+            </ion-item>
+        </ion-list>
+    </div>
+ </div>
+</ion-content>
+<ion-footer *ngIf="!finalized && !sent">
+     <div class="small" padding [ngClass]="{'web_facility_margin' : is_web}">
+            <ion-row>
+                <ion-col>
+                    <button ion-button block color="primary" (click)="cancel()">Cancel</button>
+                </ion-col>
+                <ion-col>
+                    <button ion-button block color="danger" (click)="save()">Save</button>
+                </ion-col>
+                <ion-col>
+                    <button ion-button block color="primary" (click)="finalize()">Finalize</button>
+                </ion-col>
+            </ion-row>
+    </div>
+</ion-footer>

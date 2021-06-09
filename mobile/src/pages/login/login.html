@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Login</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content   [ngClass]="{'login_content' : is_web}"> 
+
+<div padding [ngClass]="{'login_margin' : is_web, 'mob_facility_margin' : !is_web,'content_border': is_web}">
+<div class="logodiv">
+  <ion-img class="logo" width="100" height="100"  src="assets/img/eSupportive_Supervision_icons_SVG_eSS_logo.svg"></ion-img>
+</div>
+<ion-list no-lines [ngClass]="{'login_item_margin' : is_web}">
+ <ion-item>
+  <ion-label> <ion-img class="login-img" width="10" height="10" src="assets/img/eSupportive_Supervision_SVG_username.svg"></ion-img></ion-label>
+      <ion-input type="text" placeholder="Username" [(ngModel)]="obj.username" class="login-input"></ion-input>
+  </ion-item >
+    <ion-item >
+      <ion-label> <ion-img class="login-img" width="10" height="10" src="assets/img/eSupportive_Supervision_SVG_password.svg"></ion-img></ion-label>
+        <ion-input type="password" placeholder="Password" [(ngModel)]="obj.password" class="login-input" clearOnEdit=false (keypress)="_runScript($event)"></ion-input>
+    </ion-item>
+  </ion-list>
+  <div  [ngClass]="{'login_item_margin' : is_web}">
+    <button type="button" ion-button full (click)="login()" class="login-button"> 
+  <ion-img class="login-img" width="10" height="10" src="assets/img/eSupportive_Supervision_icons_SVG_login.svg"></ion-img>Login</button>
+  </div>
+ 
+  
+<div class="forgotpassword"><u><span (click)="forgotPassword()" class="ess-pointer">Forgot Password?</span></u>
+<h5>v{{appVersionName}}</h5></div>
+  </div>
+</ion-content>

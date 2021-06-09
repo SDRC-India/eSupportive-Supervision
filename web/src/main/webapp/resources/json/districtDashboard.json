@@ -1,0 +1,161 @@
+{
+  "keyIndcators": [
+		  {
+		    "dataValue": 41,		    
+		    "indicator_Name": "Under-five mortality rate",
+		    "short_Name": "IMR",
+		    "sourceName": "Sample Registration System (SRS)",
+		    "timeperiod": "2015"
+		  },
+		  {
+		    "dataValue": 221,
+		    "indicator_Name": "Infant mortality rate",
+		    "short_Name": "MMR",
+		    "sourceName": "Sample Registration System (SRS)",
+		    "timeperiod": "2011-2013"
+		  },
+		  {
+		    "dataValue": 48,
+		    "indicator_Name": "Neonatal mortality rate",
+		    "short_Name": "U5MR",
+		    "sourceName": "Sample Registration System (SRS)",
+		    "timeperiod": "2015"
+		  },
+		  {
+			 "dataValue": 27,
+			 "indicator_Name": "Infant mortality rate",
+			 "short_Name": "NMR",
+			 "sourceName": "Sample Registration System (SRS)",
+			 "timeperiod": "2015"
+          }
+		],
+  "serviceRmncha": [
+    [
+      {
+        "indicator_Name": "New-borns immunized with BCG, OPV & Hepatitis B before discharge",
+        "axis": "New-borns immunized with BCG, OPV & Hepatitis B before discharge",
+        "value": "9.3"
+      },
+      {
+        "indicator_Name": "Facilities where partograph is used to monitor progress of labour",
+        "axis": "Facilities using partographs",
+        "value": "44.8"
+      },
+      {
+        "indicator_Name": "Availability of drugs/supplies - Designated NBCC",
+        "axis": "Facilities with functional NBCC",
+        "value": "93.4"
+      }
+    ]
+  ],
+  "cdNcd": [
+    [
+      {
+        "indicator_Name": "Facilities where RDT kits are available",
+        "axis": "Facilities with RDT kits available",
+        "value": "20.0"
+      },
+      {
+        "indicator_Name": "Facilities where sputum collection and transportation facility is available",
+        "axis": "Facilities where sputum collection & transportation is available",
+        "value": "38.3"
+      },
+      {
+        "indicator_Name": "Facilities where NCD clinic is functional",
+        "axis": "Facilities with functional NCD clinic",
+        "value": "46.3"
+      },
+      {
+        "indicator_Name": "Facilities where its NQAS score equals to or is above 50%",
+        "axis": "Facilities with NQAS score equal to or above 50%",
+        "value": "62.6"
+      }
+    ]
+  ],
+  "community":[
+	[
+      {
+        "indicator_Name": "communities where maternal/child deaths are reported from the area of sub-center in last 1 year",
+        "axis": "Sub centers reporting maternal/child deaths in last 1 year",
+        "value": "83.4"
+      },
+      {
+        "indicator_Name": "VHND sessions attended by 75% of beneficiaries as per due list",
+        "axis": "VHND sessions attended by 75% of beneficiaries as per due list",
+        "value": "73.2"
+      },
+      {
+        "indicator_Name": "ANMs reporting communities where maternal/child deaths are reported from the area of sub-center in last 1 year",
+        "axis": "Infants exclusively breast fed for 6 months",
+        "value": "60.8"
+      }
+    ]
+  ],
+  "timePeriodName": "Sep 2017",
+  "maternalDeaths":[
+    {
+      "area_Name": null,
+      "key": "Maternal deaths",
+      "percentageValue": "82.0",
+      "indicator_Name": "Maternal deaths",
+      "short_Name": "Maternal deaths",
+      "sourceName": null,
+      "timeperiod": "Sep 2017",
+      "unit_Value": "Number"
+    },
+    {
+      "area_Name": null,
+      "key": "Maternal deaths",
+      "percentageValue": "60.0",
+      "indicator_Name": "Maternal deaths",
+      "short_Name": "Maternal deaths",
+      "sourceName": null,
+      "timeperiod": "Oct 2017",
+      "unit_Value": "Number"
+    }
+    ],
+  "ppiucd":[
+    {
+      "area_Name": null,
+      "key": "Females with PPIUCD inserted at facilities",
+      "percentageValue": "82.0",
+      "indicator_Name": "Females with PPIUCD inserted at facilities",
+      "short_Name": "Females with PPIUCD inserted at facilities",
+      "sourceName": null,
+      "timeperiod": "Sep 2017",
+      "unit_Value": "Number"
+    },
+    {
+      "area_Name": null,
+      "key": "Females with PPIUCD inserted at facilities",
+      "percentageValue": "32.0",
+      "indicator_Name": "Females with PPIUCD inserted at facilities",
+      "short_Name": "Females with PPIUCD inserted at facilities",
+      "sourceName": null,
+      "timeperiod": "Oct 2017",
+      "unit_Value": "Number"
+    }
+    ],
+   "diarrhoea":[
+    {
+      "area_Name": null,
+      "key": "Children under 5 years admitted with diarrhoea",
+      "percentageValue": "100.0",
+      "indicator_Name": "Children under 5 years admitted with diarrhoea",
+      "short_Name": "Children under 5 years admitted with diarrhoea",
+      "sourceName": null,
+      "timeperiod": "Sep 2017",
+      "unit_Value": "Number"
+    },
+    {
+      "area_Name": null,
+      "key": "Children under 5 years admitted with diarrhoea",
+      "percentageValue": "57.0",
+      "indicator_Name": "Children under 5 years admitted with diarrhoea",
+      "short_Name": "Children under 5 years admitted with diarrhoea",
+      "sourceName": null,
+      "timeperiod": "Oct 2017",
+      "unit_Value": "Number"
+    }
+  ]
+}

@@ -1,0 +1,158 @@
+page-login {
+    .button-md{
+        background-color: #28323d;
+        height: 6.6rem;
+        padding:0px;
+        box-shadow: none;
+    }
+    .button-inner {
+        background-color: #28323d;
+        height: 6.6rem;
+        padding:0px;
+    }
+    ion-input, ion-textarea {
+        position: relative;
+        display: block;
+        -webkit-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+        width: 100%;
+        background-color: #f0b569;
+    }
+    .login-img{
+       padding-right: 10px;
+       size: 50px;
+    }
+    ion-img {
+       text-align: left;
+       display: inline-block;
+       min-width: 20px;
+       min-height: 20px;
+       background: transparent;
+    }  
+    list-md .item-input:last-child {
+       border-bottom-color: transparent;
+       border-bottom: 0px solid transparent;
+    } 
+    .list-md .item-input.input-has-focus:last-child {
+        border-bottom-color: transparent;
+        box-shadow: inset 0 0px 0 0 transparent;
+    }
+    .list-md .item-input:last-child {
+        border-bottom: 0px solid transparent;
+    }
+    .item-md{
+        padding:0px;
+    }
+    .grid {
+        margin-top: 30%;
+    }
+    .item-md {
+        position: relative;
+        padding-right: 0;
+        padding-top: 5% !important;
+    }
+
+    .item-input .label-md, .item-select .label-md, .item-datetime .label-md {
+       color: #291b1b;
+       padding-left: 10px;
+    }
+    .input-wrapper {
+       background-color: #f0b569;
+    }
+    [tappable] {
+     cursor: none; 
+    }
+    .item-md.item-input.ng-valid.input-has-value:not(.input-has-focus) .item-inner {
+        border-bottom-color: transparent;
+        box-shadow: inset 0 -1px 0 0 transparent; 
+     }  
+    .logibtn{
+        background-color: #28323d!important;
+    }
+    .logodiv{
+        margin: 0px auto;
+        text-align: center;
+    }
+    .logo{
+        padding-top: 35px;
+     }
+    .forgotpassword{
+        text-align: center;
+        margin-top: 50px;
+    }
+    .item-md.item-block .item-inner {
+       padding-right: 0px; 
+    }
+    .web_margin{
+        margin-left: 30%;
+        margin-right: 30%;
+    } 
+    .label-ios {
+        margin-left: 15px !important;
+        margin-right: 8px;
+        margin-top: 11px;
+        margin-bottom: 11px;
+    }
+    .item-ios {
+        padding-left: 0px !important;
+        margin-bottom: 10px !important;
+    }
+    .button-ios {
+        border-radius: 4px;
+        height: 4.8em !important;
+    }
+
+}
+
+.fpModal{
+    .alert-head{
+        background: #f0b569 !important;
+    }
+    .alert-message{
+        margin-top: 5%;
+    }
+    h5{
+        font-size: 1.3rem;
+        margin-top: -0.4rem;
+        color: black;
+    }
+    h2{
+        font-size: 20px !important;
+        text-align: center;
+    }
+    .alert-button-group{
+       background: #28323d !important;
+    }
+}
+ion-alert.alert-top {
+    -webkit-align-items: center !important;
+    -ms-flex-align: center !important;
+    align-items: center !important;
+    padding-top: 0px !important;
+}
+.login_margin{
+    border: 1px solid #ddd;
+    margin-left: 20%;
+    margin-right: 20%;
+    background:  white;
+    height: 100%;
+   
+}
+.login_content_border{
+    border-top:none ;
+    border-bottom: none;
+}
+.login_content{
+    background: #f0f0f0
+}
+.login_item_margin{
+    margin-left: 10%;
+    margin-right: 10%
+}
+.login-padding{
+    padding: 10%
+}
+.login_content_padding{
+    padding: 10px
+    }

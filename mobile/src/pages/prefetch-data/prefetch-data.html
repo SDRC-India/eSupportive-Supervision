@@ -1,0 +1,71 @@
+<!--
+  Generated template for the PrefetchDataPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Prefetch Data</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-item-group>
+    <div [ngClass]="{'web_margin' : is_web,'content_border' : is_web}">
+      <ion-item-divider color="light" class="ess_item_heading">Facility Checklist</ion-item-divider>
+      <ion-item>
+        <ion-row text-wrap  (click)="openFacilitySelectionModal('facility')" class="ess-pointer"> 
+          <ion-col col-10>
+            <ion-icon name="md-add-circle"></ion-icon> Add
+          </ion-col>
+        </ion-row>
+      </ion-item>
+
+      <ion-item *ngFor="let d of fCheckListFacility; let i = index">
+        <ion-row text-wrap>
+          <ion-col col-10>
+            <ion-row>
+              {{ d.name }}
+            </ion-row>
+          </ion-col>
+        </ion-row>
+      </ion-item> <br><br>
+
+      <ion-item-divider color="light" class="ess_item_heading">Community Checklist</ion-item-divider>
+      <ion-item>
+        <ion-row text-wrap (click)="openFacilitySelectionModal('community')" class="ess-pointer">
+          <ion-col col-10>
+            <ion-icon name="md-add-circle" ></ion-icon> Add
+          </ion-col>
+        </ion-row>
+      </ion-item>
+      <ion-item *ngFor="let d of cCheckListFacility; let i = index">
+        <ion-row text-wrap>
+          <ion-col col-10>
+            <ion-row>
+              {{ d.name }}
+            </ion-row>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+    </div>
+  </ion-item-group>
+
+</ion-content>
+
+
+
+<ion-footer>
+    <div padding [ngClass]="{'web_facility_margin' : is_web}">
+            <ion-row>
+                <ion-col class="buttonPosition">
+                    <button ion-button block color="primary" class="buttonSize" (click)="fetchData()">FETCH</button>
+                </ion-col>
+            </ion-row>
+    </div>
+</ion-footer>
